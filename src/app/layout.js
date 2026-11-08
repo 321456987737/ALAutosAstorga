@@ -1,0 +1,63 @@
+import { Bebas_Neue, Montserrat } from "next/font/google";
+import Providers from "../lib/providers";
+import "./globals.css";
+import { Analytics } from "@vercel/analytics/next"
+import { BUSINESS_LOCATION, BUSINESS_NAME } from "@/lib/business";
+const bebasNeue = Bebas_Neue({
+  variable: "--font-bebas-neue",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+});
+
+export const metadata = {
+  title: BUSINESS_NAME,
+  description: `${BUSINESS_NAME} is a car dealership in ${BUSINESS_LOCATION}.`,
+  icons: {
+    icon: "/logo.png",
+  },
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body className={`${bebasNeue.variable} ${montserrat.variable}`}>
+        <Analytics/>
+        <Providers>{children}</Providers>
+      </body>
+    </html>
+  );
+}
+// import { Geist, Geist_Mono } from "next/font/google";
+// import "./globals.css";
+
+// const geistSans = Geist({
+//   variable: "--font-geist-sans",
+//   subsets: ["latin"],
+// });
+
+// const geistMono = Geist_Mono({
+//   variable: "--font-geist-mono",
+//   subsets: ["latin"],
+// });
+
+// export const metadata = {
+//   title: "Your Website",
+//   description: "Your website description",
+// };
+
+// export default function RootLayout({ children }) {
+//   return (
+//     <html
+//       lang="en"
+//       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+//     >
+//       <body className="min-h-full flex flex-col">{children}</body>
+//     </html>
+//   );
+// }
