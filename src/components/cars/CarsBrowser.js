@@ -38,7 +38,7 @@ const CONDITIONS = ["New", "Used"];
 
 const MAKES = [
   "BMW",
-  "Mercedes-Benz",
+  "Mercedes",
   "Toyota",
   "Porsche",
   "Audi",
