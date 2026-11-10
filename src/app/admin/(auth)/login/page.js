@@ -58,7 +58,7 @@ export default function AdminLoginPage() {
               alt=""
               width={44}
               height={44}
-              className="mx-auto h-11 w-11 object-contain brightness-0 invert"
+              className="mx-auto h-11 w-11 object-contain brightness-0 "
             />
 
             <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.24em] text-black/35">

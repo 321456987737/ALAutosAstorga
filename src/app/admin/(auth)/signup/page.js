@@ -95,7 +95,7 @@ export default function AdminSignupPage() {
               alt=""
               width={44}
               height={44}
-              className="h-11 w-11 shrink-0 object-contain brightness-0 invert"
+              className="h-11 w-11 shrink-0 object-contain brightness-0 "
             />
 
             <div>
