@@ -2,8 +2,8 @@ import CarsBrowser from "@/components/cars/CarsBrowser";
 
 async function getCars(searchParams) {
   const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    "http://localhost:3000";
+    process.env.NEXT_PUBLIC_SITE_URL;
+    // "http://localhost:3000";
 
   const queryString = new URLSearchParams();
 
