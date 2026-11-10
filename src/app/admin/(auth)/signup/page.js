@@ -89,16 +89,19 @@ export default function AdminSignupPage() {
       <div className="w-full max-w-2xl">
         <div className="rounded-[28px] border border-black/10 bg-white p-6 shadow-[0_20px_70px_rgba(0,0,0,0.07)] sm:p-8 md:p-9">
           {/* HEADER */}
-          <div className="mb-7 flex items-start gap-4">
+          <div className="mb-7 flex flex-col md:flex-row items-center md:items-start gap-4">
+            <div>
+
             <Image
               src="/logo.svg"
               alt=""
               width={44}
               height={44}
               className="h-15 w-fit shrink-0 object-contain brightness-0 "
-            />
+              />
+              </div>
 
-            <div>
+            <div className="flex flex-col items-center md:items-start gap-1">
               <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-black/35">
                 {BUSINESS_NAME}
               </p>
@@ -107,7 +110,7 @@ export default function AdminSignupPage() {
                 Create admin account
               </h1>
 
-              <p className="mt-1.5 text-sm text-black/45">
+              <p className="mt-1.5 text-sm text-black/45 text-center">
                 Set up the administrator account for your dealership.
               </p>
             </div>

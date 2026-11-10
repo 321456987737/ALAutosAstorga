@@ -505,7 +505,7 @@ export default function CarForm({ initialData = null }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full min-w-0 space-y-5 pb-24 sm:space-y-6 lg:space-y-8"
+      className="w-full min-w-0 space-y-5 md:pb-24 pb-2 sm:space-y-6 lg:space-y-8"
     >
       {/* =====================================================
           ERROR
