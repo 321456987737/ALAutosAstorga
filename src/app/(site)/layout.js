@@ -1,6 +1,7 @@
 import Footer from "@/components/site/Footer";
 import Header from "@/components/site/Header";
 import CarStartup from "@/components/startinganimation";
+import WhatsAppButton from "@/components/whatsappbutton";
 import { BUSINESS_LOCATION, BUSINESS_NAME } from "@/lib/business";
 export const metadata = {
   title: BUSINESS_NAME,
@@ -17,6 +18,7 @@ export default function mainlayout({ children }) {
         />
       <Header />
         {children}
+        <WhatsAppButton/>
         <Footer/>
     </div>
     

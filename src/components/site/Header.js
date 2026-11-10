@@ -180,7 +180,7 @@ export default function Header() {
             {session && (
               <Link
                 href="/admin"
-                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2.5 text-xs font-medium text-white transition active:scale-95"
+                className="inline-flex justify-center items-center text-center  gap-2 rounded-full border border-white/20 px-4 py-2.5 text-xs font-medium text-white transition active:scale-95"
               >
                 Admin Panel
               </Link>
@@ -224,7 +224,7 @@ export default function Header() {
           {session && (
             <Link
               href="/admin"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2.5 text-xs font-medium text-white transition active:scale-95"
+              className="flex items-center text-center gap-2 rounded-full border border-white/20 px-4 py-2.5 text-xs font-medium text-white transition active:scale-95"
             >
               Admin Panel
             </Link>

@@ -155,7 +155,7 @@ export default function Footer() {
                 alt=""
                 width={64}
                 height={64}
-                className="h-14 w-14 object-contain brightness-0 invert"
+                className="h-14 w-fit object-contain brightness-0 invert"
               />
               <span className="font-bebas text-3xl tracking-[0.02em] md:text-4xl">
                 {BUSINESS_NAME}
