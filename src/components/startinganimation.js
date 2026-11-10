@@ -1,84 +1,127 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function CarStartup({
-  brand = "Your car logo here",
-  duration = 1800,
+  brand = "YOUR DEALERSHIP",
+  duration = 2600,
 }) {
-  const [started, setStarted] = useState(false);
   const [leaving, setLeaving] = useState(false);
   const [visible, setVisible] = useState(true);
 
-  useEffect(() => {
-    const frame = requestAnimationFrame(() => {
-      setStarted(true);
-    });
+ useEffect(() => {
+  const fadeTimer = setTimeout(() => {
+    setLeaving(true);
+  }, Math.max(0, duration ));
 
-    const fadeTimer = setTimeout(() => {
-      setLeaving(true);
-    }, Math.max(0, duration - 300));
+  const removeTimer = setTimeout(() => {
+    setVisible(false);
+  }, duration + 1100);
 
-    const removeTimer = setTimeout(() => {
-      setVisible(false);
-    }, duration);
+  return () => {
+    clearTimeout(fadeTimer);
+    clearTimeout(removeTimer);
+  };
+}, [duration]);
+  // useEffect(() => {
+  //   const fadeTimer = setTimeout(() => {
+  //     setLeaving(true);
+  //   }, Math.max(0, duration - 500));
 
-    return () => {
-      cancelAnimationFrame(frame);
-      clearTimeout(fadeTimer);
-      clearTimeout(removeTimer);
-    };
-  }, [duration]);
+  //   const removeTimer = setTimeout(() => {
+  //     setVisible(false);
+  //   }, duration);
+
+  //   return () => {
+  //     clearTimeout(fadeTimer);
+  //     clearTimeout(removeTimer);
+  //   };
+  // }, [duration]);
 
   if (!visible) return null;
 
   return (
-    <div
+    <motion.div
       role="status"
       aria-label={`${brand} loading`}
-      className={`fixed inset-0 z-[99999] flex items-center justify-center bg-[#0b0b0b] text-white transition-opacity duration-300 ${
-        leaving
-          ? "pointer-events-none opacity-0"
-          : "opacity-100"
-      }`}
+      initial={{ opacity: 1 }}
+      animate={{ opacity: leaving ? 0 : 1 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+      className="fixed inset-0 z-[99999] flex items-center justify-center overflow-hidden bg-[#0b0b0b] text-white"
+      style={{ pointerEvents: leaving ? "none" : "auto" }}
     >
-      <div className="flex flex-col items-center">
-        {/* Car animation */}
-        <div
-          className={`transition-all duration-700 ease-out motion-reduce:transition-none ${
-            started
-              ? "translate-x-0 opacity-100"
-              : "-translate-x-36 opacity-0"
-          }`}
-        >
+      <div className="flex flex-col items-center px-6 text-center">
+
+        {/* LOGO REVEAL */}
+        <div className="relative w-44 sm:w-56">
+          <motion.div className="mb-8 not-even:">
+            Welcome to
+          </motion.div>
           <Image
-            src="/logo.png"
+            src="/logo.svg"
             alt={`${brand} logo`}
-            width={180}
-            height={180}
-            className="h-44 w-44 object-contain"
+            width={512}
+            height={512}
+            priority
+            className="block h-auto w-full object-contain brightness-0 invert"
+          />
+
+          {/* BLACK BOX REVEAL */}
+          <motion.div
+            initial={{ y: "0%" }}
+            animate={{ y: "-110%" }}
+            transition={{
+              duration: 0.6,
+              delay: 0.1,
+              ease: [0.76, 0, 0.24, 1],
+            }}
+            className="absolute inset-0 z-10 bg-[#0b0b0b]"
           />
         </div>
 
-        {/* Simple accent line */}
-        <div
-          className={`mt-5 h-px w-20 origin-center bg-lime-400 transition-all duration-500 delay-200 ${
-            started
-              ? "scale-x-100 opacity-100"
-              : "scale-x-0 opacity-0"
-          }`}
+        {/* RED ACCENT LINE */}
+        <motion.div
+          initial={{ scaleX: 0, opacity: 0 }}
+          animate={{ scaleX: 1, opacity: 1 }}
+          transition={{
+            duration: 0.45,
+            delay: 0.55,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="mt-7 h-[2px] w-28 origin-center bg-red-500 sm:w-36"
         />
 
-        {/* Dealership name */}
-        <h1
-          className={`mt-5 text-center text-sm font-semibold tracking-[0.25em] transition-opacity duration-500 delay-300 ${
-            started ? "opacity-100" : "opacity-0"
-          }`}
+        {/* DEALERSHIP NAME */}
+        <motion.h1
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.4,
+            delay: 0.95,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="mt-5 font-montserrat text-xl font-semibold uppercase tracking-[0.25em] text-white sm:text-2xl"
         >
           {brand}
-        </h1>
+        </motion.h1>
+
+        {/* SUBTITLE */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            duration: 0.4,
+            delay: 1.15,
+          }}
+          className="mt-3 font-montserrat text-[9px] font-medium uppercase tracking-[0.3em] text-white/45"
+        >
+          FIND YOUR PERFECT DRIVE
+        </motion.p>
+
       </div>
-    </div>
+    </motion.div>
   );
 }

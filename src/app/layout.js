@@ -19,7 +19,7 @@ export const metadata = {
   title: BUSINESS_NAME,
   description: `${BUSINESS_NAME} is a car dealership in ${BUSINESS_LOCATION}.`,
   icons: {
-    icon: "/logo.png",
+    icon: "/logo.svg",
   },
 };
 

@@ -91,11 +91,11 @@ export default function AdminSignupPage() {
           {/* HEADER */}
           <div className="mb-7 flex items-start gap-4">
             <Image
-              src="/logo.png"
+              src="/logo.svg"
               alt=""
               width={44}
               height={44}
-              className="h-11 w-11 shrink-0 object-contain"
+              className="h-11 w-11 shrink-0 object-contain brightness-0 invert"
             />
 
             <div>

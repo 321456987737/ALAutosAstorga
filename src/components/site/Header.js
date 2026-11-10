@@ -109,20 +109,20 @@ export default function Header() {
         }}
         className="fixed inset-x-0 top-0 z-50 hidden h-20 border-b text-white md:block"
       >
-        <div className="mx-auto flex h-full max-w-7xl items-center justify-between gap-8 px-5 md:px-8">
+        <div className="mx-auto flex h-full max-w-7xl items-center justify-between lg:gap-8 gap-5.5 px-2 lg:px-8">
           {/* Logo */}
 
           <Link
             href="/"
             aria-label={`${BUSINESS_NAME} home`}
-            className="flex shrink-0 items-center gap-3"
+            className="flex shrink-0 items-center  gap-1.5"
           >
             <Image
-              src="/logo.png"
+              src="/logo.svg"
               alt=""
               width={44}
               height={44}
-              className="h-11 w-11 object-contain"
+              className="h-9 w-fit object-contain brightness-0 invert"
             />
             <span className="text-sm font-semibold tracking-tight text-white">
               {BUSINESS_NAME}
@@ -133,7 +133,7 @@ export default function Header() {
 
           <nav
             aria-label="Main navigation"
-            className="flex items-center gap-8"
+            className="flex items-center lg:gap-8 gap-3.5"
           >
             {navLinks.map((link) => {
               const active = isActive(link.href);
@@ -210,11 +210,11 @@ export default function Header() {
             className="flex min-w-0 shrink items-center gap-2.5"
           >
             <Image
-              src="/logo.png"
+              src="/logo.svg"
               alt=""
               width={38}
               height={38}
-              className="h-9 w-9 shrink-0 object-contain"
+              className="h-9 w-fit shrink-0 object-contain brightness-0 invert"
             />
             <span className="truncate text-sm font-semibold tracking-tight text-white">
               {BUSINESS_NAME}
