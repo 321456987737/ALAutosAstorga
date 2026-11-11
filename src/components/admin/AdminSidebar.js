@@ -9,8 +9,9 @@ import {
   MessageSquare,
   CalendarCheck,
   ExternalLink,
+  LogOut,
 } from "lucide-react";
-
+import { signOut } from "next-auth/react";
 const navigation = [
   {
     label: "Dashboard",
@@ -49,7 +50,9 @@ const iconSpring = {
 
 export default function AdminSidebar() {
   const pathname = usePathname();
-
+const handleSignOut = () => {
+  signOut({ callbackUrl: "/login" });
+};
   const isActive = (href) => {
     if (href === "/admin") {
       return pathname === "/admin";
@@ -143,6 +146,14 @@ export default function AdminSidebar() {
 
             <span>View Website</span>
           </Link>
+            
+<button
+  onClick={handleSignOut}
+  className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-red-600 transition-all duration-200 hover:bg-red-50 hover:text-red-700"
+>
+  <LogOut size={18} strokeWidth={2} />
+  <span>Sign out</span>
+</button>
         </div>
       </aside>
 
