@@ -149,7 +149,7 @@ const handleSignOut = () => {
             
 <button
   onClick={handleSignOut}
-  className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-red-600 transition-all duration-200 hover:bg-red-50 hover:text-red-700"
+  className="flex h-11 w-full items-center gap-3 rounded-xl bg-red-50/70 px-3 text-sm font-medium text-red-700 transition-colors hover:bg-red-100 hover:text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-300"
 >
   <LogOut size={18} strokeWidth={2} />
   <span>Sign out</span>
