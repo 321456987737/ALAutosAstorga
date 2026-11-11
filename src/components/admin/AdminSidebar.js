@@ -51,7 +51,7 @@ const iconSpring = {
 export default function AdminSidebar() {
   const pathname = usePathname();
 const handleSignOut = () => {
-  signOut({ callbackUrl: "/login" });
+  signOut({ callbackUrl: "/admin/login" });
 };
   const isActive = (href) => {
     if (href === "/admin") {
