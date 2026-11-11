@@ -42,7 +42,7 @@ export default function AdminLoginPage() {
     } catch (error) {
       console.error("LOGIN ERROR:", error);
 
-      setError("Something went wrong. Please try again.");
+      setError("Limit reached. Please try again later.");
       setLoading(false);
     }
   }

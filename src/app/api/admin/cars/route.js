@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { connectDB } from "@/lib/db";
+import { rateLimit } from "@/lib/rate-limit";
 import Car from "@/models/Car";
 
 export const dynamic = "force-dynamic";
@@ -424,6 +425,9 @@ export async function GET(request) {
 ============================================================ */
 
 export async function POST(request) {
+  const rateLimitResponse = rateLimit(request, { limit: 10 });
+  if (rateLimitResponse) return rateLimitResponse;
+
   try {
     await connectDB();
 

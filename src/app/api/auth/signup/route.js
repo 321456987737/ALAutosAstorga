@@ -2,9 +2,13 @@ import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 
 import {connectDB} from "@/lib/db";
+import { rateLimit } from "@/lib/rate-limit";
 import User from "@/models/User";
 
 export async function POST(request) {
+  const rateLimitResponse = rateLimit(request, { limit: 10 });
+  if (rateLimitResponse) return rateLimitResponse;
+
   try {
     const body = await request.json();
 

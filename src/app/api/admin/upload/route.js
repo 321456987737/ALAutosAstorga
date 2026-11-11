@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import cloudinary from "@/lib/cloudinary";
+import { rateLimit } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 
@@ -14,6 +15,9 @@ const ALLOWED_TYPES = [
 ];
 
 export async function POST(request) {
+  const rateLimitResponse = rateLimit(request, { limit: 10 });
+  if (rateLimitResponse) return rateLimitResponse;
+
   const uploadedPublicIds = [];
 
   try {

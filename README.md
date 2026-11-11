@@ -34,3 +34,22 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## API rate limiting
+
+Sensitive API POST routes use the shared `rateLimit` helper in `src/lib/rate-limit.js`. It identifies clients from `x-forwarded-for` (first IP) or `x-real-ip`, allows the configured number of requests per 60-second window, returns a JSON `429` response with `Retry-After` and rate-limit headers, and periodically removes expired entries.
+
+Use it at the start of a route handler, before doing other work:
+
+```js
+import { rateLimit } from "@/lib/rate-limit";
+
+export async function POST(request) {
+  const rateLimitResponse = rateLimit(request, { limit: 10 });
+  if (rateLimitResponse) return rateLimitResponse;
+
+  // Continue with the route handler.
+}
+```
+
+The current implementation uses an in-memory Map, so limits are shared only within a warm Node.js process. On Vercel or any multi-instance/serverless deployment, counters are not shared across instances and may reset when an instance restarts. This is an inherent limitation of in-memory rate limiting; deploy behind a trusted proxy that supplies client IP headers. The current rules are 5 requests/minute for admin login, inquiries, and test-drive bookings, and 10 requests/minute for admin car creation, image uploads, and admin signup.

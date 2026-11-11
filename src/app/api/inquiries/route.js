@@ -4,11 +4,15 @@ import { NextResponse } from "next/server";
 import mongoose from "mongoose";
 
 import { connectDB } from "@/lib/db";
+import { rateLimit } from "@/lib/rate-limit";
 
 import Car from "@/models/Car";
 import Inquiry from "@/models/Inquiry";
 
 export async function POST(request) {
+  const rateLimitResponse = rateLimit(request, { limit: 5 });
+  if (rateLimitResponse) return rateLimitResponse;
+
   try {
     await connectDB();
 
