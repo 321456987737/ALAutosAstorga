@@ -29,7 +29,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Please enter your name",
+          message: "Introduce tu nombre.",
         },
         { status: 400 }
       );
@@ -40,7 +40,7 @@ export async function POST(request) {
         {
           success: false,
           message:
-            "Name must be at least 2 characters",
+            "El nombre debe tener al menos 2 caracteres.",
         },
         { status: 400 }
       );
@@ -51,7 +51,7 @@ export async function POST(request) {
         {
           success: false,
           message:
-            "Please enter your phone number",
+            "Introduce tu número de teléfono.",
         },
         { status: 400 }
       );
@@ -61,7 +61,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Please enter a message",
+          message: "Escribe un mensaje.",
         },
         { status: 400 }
       );
@@ -72,7 +72,7 @@ export async function POST(request) {
         {
           success: false,
           message:
-            "Please enter a longer message",
+            "El mensaje debe tener al menos 5 caracteres.",
         },
         { status: 400 }
       );
@@ -87,7 +87,7 @@ export async function POST(request) {
           {
             success: false,
             message:
-              "Please enter a valid email address",
+              "Introduce una dirección de correo electrónico válida.",
           },
           { status: 400 }
         );
@@ -101,7 +101,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Invalid vehicle",
+          message: "El vehículo no es válido.",
         },
         { status: 400 }
       );
@@ -116,7 +116,7 @@ export async function POST(request) {
         return NextResponse.json(
           {
             success: false,
-            message: "Vehicle not found",
+            message: "No se ha encontrado el vehículo.",
           },
           { status: 404 }
         );
@@ -136,7 +136,7 @@ export async function POST(request) {
       {
         success: true,
         message:
-          "Your inquiry has been sent successfully",
+          "Tu consulta se ha enviado correctamente.",
         data: {
           inquiryId: inquiry._id,
         },
@@ -153,7 +153,7 @@ export async function POST(request) {
       {
         success: false,
         message:
-          "Something went wrong. Please try again.",
+          "Se ha producido un error. Inténtalo de nuevo.",
       },
       { status: 500 }
     );

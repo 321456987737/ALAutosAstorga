@@ -1,12 +1,12 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Este proyecto usa [Next.js](https://nextjs.org) y se creó con [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Primeros pasos
 
-First, run the development server:
+Inicia el servidor de desarrollo:
 
 ```bash
 npm run dev
-# or
+# o
 yarn dev
 # or
 pnpm dev
@@ -14,32 +14,32 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000) en el navegador para ver la aplicación.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Puedes empezar a editar la página modificando `app/page.js`. La página se actualiza automáticamente al guardar los cambios.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Este proyecto usa [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) para optimizar y cargar automáticamente [Geist](https://vercel.com/font), una familia tipográfica de Vercel.
 
-## Learn More
+## Más información
 
-To learn more about Next.js, take a look at the following resources:
+Para obtener más información sobre Next.js, consulta estos recursos:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Documentación de Next.js](https://nextjs.org/docs): descubre las funciones y la API de Next.js.
+- [Aprende Next.js](https://nextjs.org/learn): tutorial interactivo de Next.js.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+También puedes visitar [el repositorio de Next.js en GitHub](https://github.com/vercel/next.js). ¡Tus comentarios y contribuciones son bienvenidos!
 
-## Deploy on Vercel
+## Despliegue en Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+La forma más sencilla de desplegar tu aplicación Next.js es usar la [plataforma Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme), creada por el equipo de Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Consulta [la documentación de despliegue de Next.js](https://nextjs.org/docs/app/building-your-application/deploying) para obtener más información.
 
-## API rate limiting
+## Limitación de solicitudes de la API
 
-Sensitive API POST routes use the shared `rateLimit` helper in `src/lib/rate-limit.js`. It identifies clients from `x-forwarded-for` (first IP) or `x-real-ip`, allows the configured number of requests per 60-second window, returns a JSON `429` response with `Retry-After` and rate-limit headers, and periodically removes expired entries.
+Las rutas POST sensibles de la API usan el helper compartido `rateLimit` en `src/lib/rate-limit.js`. Identifica a los clientes mediante `x-forwarded-for` (primera IP) o `x-real-ip`, permite el número configurado de solicitudes en cada intervalo de 60 segundos, devuelve una respuesta JSON `429` con las cabeceras `Retry-After` y de limitación, y elimina periódicamente las entradas caducadas.
 
-Use it at the start of a route handler, before doing other work:
+Úsalo al principio del manejador de una ruta, antes de realizar otras operaciones:
 
 ```js
 import { rateLimit } from "@/lib/rate-limit";
@@ -48,8 +48,8 @@ export async function POST(request) {
   const rateLimitResponse = rateLimit(request, { limit: 10 });
   if (rateLimitResponse) return rateLimitResponse;
 
-  // Continue with the route handler.
+  // Continúa con el manejador de la ruta.
 }
 ```
 
-The current implementation uses an in-memory Map, so limits are shared only within a warm Node.js process. On Vercel or any multi-instance/serverless deployment, counters are not shared across instances and may reset when an instance restarts. This is an inherent limitation of in-memory rate limiting; deploy behind a trusted proxy that supplies client IP headers. The current rules are 5 requests/minute for admin login, inquiries, and test-drive bookings, and 10 requests/minute for admin car creation, image uploads, and admin signup.
+La implementación actual usa un `Map` en memoria, por lo que los límites solo se comparten dentro de un proceso activo de Node.js. En Vercel o en cualquier despliegue sin servidor o con varias instancias, los contadores no se comparten entre instancias y pueden reiniciarse al reiniciar una instancia. Esta es una limitación inherente a la limitación de solicitudes en memoria; despliega detrás de un proxy de confianza que proporcione las cabeceras con la IP del cliente. Las reglas actuales permiten 5 solicitudes por minuto para el inicio de sesión de administración, las consultas y las reservas de pruebas de conducción, y 10 solicitudes por minuto para la creación de vehículos, la carga de imágenes y el registro de administradores.

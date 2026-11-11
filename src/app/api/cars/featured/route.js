@@ -33,7 +33,7 @@ export async function GET() {
     return NextResponse.json(
       {
         success: false,
-        message: "Unable to load featured vehicles.",
+        message: "No se han podido cargar los vehículos destacados.",
       },
       {
         status: 500,

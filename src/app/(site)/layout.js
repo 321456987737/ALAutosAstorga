@@ -5,7 +5,7 @@ import WhatsAppButton from "@/components/whatsappbutton";
 import { BUSINESS_LOCATION, BUSINESS_NAME } from "@/lib/business";
 export const metadata = {
   title: BUSINESS_NAME,
-  description: `${BUSINESS_NAME} is a car dealership in ${BUSINESS_LOCATION}.`,
+  description: `${BUSINESS_NAME} es un concesionario de automóviles en ${BUSINESS_LOCATION}.`,
 };
 
 export default function mainlayout({ children }) {

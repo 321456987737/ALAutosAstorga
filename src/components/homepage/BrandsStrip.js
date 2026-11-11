@@ -40,7 +40,7 @@ const brands = [
 export default function BrandsMarquee() {
   return (
     <section
-      aria-label="Featured automotive brands"
+      aria-label="Marcas de automóviles destacadas"
       className="border-b border-black/10 bg-white py-8"
     >
       <Marquee

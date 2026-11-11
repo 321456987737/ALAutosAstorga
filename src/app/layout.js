@@ -17,7 +17,7 @@ const montserrat = Montserrat({
 
 export const metadata = {
   title: BUSINESS_NAME,
-  description: `${BUSINESS_NAME} is a car dealership in ${BUSINESS_LOCATION}.`,
+  description: `${BUSINESS_NAME} es un concesionario de automóviles en ${BUSINESS_LOCATION}.`,
   icons: {
     icon: "/logo.svg",
   },
@@ -25,7 +25,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body className={`${bebasNeue.variable} ${montserrat.variable}`}>
         <Analytics/>
         <Providers>{children}</Providers>

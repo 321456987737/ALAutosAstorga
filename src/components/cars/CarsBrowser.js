@@ -12,6 +12,7 @@ import {
   X,
 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { translateVehicleTerm } from "@/lib/localization";
 
 const HERO_IMAGE = "/images/inventoryimages/Mercedes-AMG GT.webp";
 
@@ -52,23 +53,23 @@ const MAKES = [
 const SORT_OPTIONS = [
   {
     value: "newest",
-    label: "Newest first",
+    label: "Más recientes",
   },
   {
     value: "price-low",
-    label: "Price: Low to High",
+    label: "Precio: de menor a mayor",
   },
   {
     value: "price-high",
-    label: "Price: High to Low",
+    label: "Precio: de mayor a menor",
   },
   {
     value: "year-new",
-    label: "Newest year",
+    label: "Año más reciente",
   },
   {
     value: "mileage-low",
-    label: "Lowest mileage",
+    label: "Menos kilómetros",
   },
 ];
 
@@ -477,13 +478,13 @@ export default function CarsBrowser({
         });
 
         if (!response.ok) {
-          throw new Error("Failed to load inventory");
+          throw new Error("No se ha podido cargar el inventario.");
         }
 
         const result = await response.json();
 
         if (!result.success) {
-          throw new Error(result.message || "Failed to load inventory");
+          throw new Error(result.message || "No se ha podido cargar el inventario.");
         }
 
         /*
@@ -555,7 +556,7 @@ export default function CarsBrowser({
 
         console.error("Cars fetch error:", fetchError);
 
-        setError("We couldn't load the inventory. Please try again.");
+        setError("No se ha podido cargar el inventario. Inténtalo de nuevo.");
       } finally {
         /*
             An old request must never change
@@ -820,7 +821,7 @@ export default function CarsBrowser({
         <div className="absolute inset-0">
           <Image
             src={HERO_IMAGE}
-            alt="Featured vehicle"
+            alt="Vehículo destacado"
             fill
             priority
             sizes="100vw"
@@ -850,16 +851,16 @@ export default function CarsBrowser({
               className="max-w-3xl"
             >
               <p className="mb-3 font-montserrat text-[9px] font-medium uppercase tracking-[0.35em] text-white/60 md:text-[10px]">
-                Our Collection
+                Nuestra selección
               </p>
 
               <h1 className="font-bebas text-[clamp(4rem,8vw,8rem)] leading-[0.8] tracking-[-0.045em] text-white">
-                Find Your Next Car
+                Encuentra tu próximo coche
               </h1>
 
               <p className="mt-5 max-w-xl font-montserrat text-[10px] leading-[1.8] tracking-[0.05em] text-white/60 md:text-[11px]">
-                Explore our current collection of carefully selected vehicles,
-                from refined daily drivers to performance-focused machines.
+                Descubre nuestra selección de vehículos, desde elegantes
+                coches para el día a día hasta modelos de altas prestaciones.
               </p>
             </motion.div>
           </div>
@@ -875,7 +876,7 @@ export default function CarsBrowser({
           <div className="mx-auto flex max-w-[1800px] items-center justify-between gap-5 px-6 py-4 md:px-10 lg:px-14">
             <div>
               <p className="font-montserrat text-[8px] uppercase tracking-[0.25em] text-black/35">
-                Showing category
+                Categoría seleccionada
               </p>
 
               <p className="mt-1 font-bebas text-2xl leading-none">
@@ -903,11 +904,11 @@ export default function CarsBrowser({
           <div className="flex flex-col gap-7 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <p className="font-montserrat text-[9px] font-medium uppercase tracking-[0.3em] text-black/35 md:text-[10px]">
-                Available vehicles
+                Vehículos disponibles
               </p>
 
               <h2 className="mt-2 font-bebas text-4xl leading-none tracking-[-0.025em] md:text-5xl">
-                The Collection
+                Nuestra selección
               </h2>
             </div>
 
@@ -924,7 +925,7 @@ export default function CarsBrowser({
                   name="search"
                   value={search}
                   onChange={(event) => setSearch(event.target.value)}
-                  placeholder="Search make, model or stock number"
+                  placeholder="Buscar marca, modelo o número de inventario"
                   className="min-w-0 flex-1 bg-transparent font-montserrat text-[11px] text-black outline-none placeholder:text-black/30"
                 />
 
@@ -932,7 +933,7 @@ export default function CarsBrowser({
                   type="submit"
                   className="group ml-4 flex shrink-0 cursor-pointer items-center gap-2 font-montserrat text-[9px] font-medium uppercase tracking-[0.18em] text-black"
                 >
-                  Search
+                  Buscar
                   <ArrowUpRight
                     size={14}
                     strokeWidth={1.3}
@@ -955,7 +956,7 @@ export default function CarsBrowser({
             <div className="flex flex-col items-center gap-3">
               {/* <p className="font-montserrat text-[9px] uppercase tracking-[0.2em] text-black/35">
                 {pagination.total}{" "}
-                {pagination.total === 1 ? "vehicle" : "vehicles"} available
+                {pagination.total === 1 ? "vehículo disponible" : "vehículos disponibles"}
               </p> */}
               <div className="flex flex-col gap-0.5">
                 <span className="font-montserrat text-[9px] uppercase tracking-[0.2em] text-black/35">
@@ -963,12 +964,12 @@ export default function CarsBrowser({
                 </span>
 
                 <span className="font-montserrat text-[9px] uppercase tracking-[0.2em] text-black/35">
-                  {pagination.total === 1 ? "vehicle" : "vehicles"} available
+                  {pagination.total === 1 ? "vehículo disponible" : "vehículos disponibles"}
                 </span>
               </div>
               {loading && cars.length > 0 && (
                 <span className="font-montserrat text-[8px] uppercase tracking-[0.15em] text-black/30">
-                  Updating...
+                  Actualizando...
                 </span>
               )}
             </div>
@@ -980,7 +981,7 @@ export default function CarsBrowser({
                 className="flex cursor-pointer items-center gap-2 border border-black/15 px-4 py-2.5 font-montserrat text-[9px] font-medium uppercase tracking-[0.16em] transition-colors duration-300 hover:border-black md:hidden"
               >
                 <SlidersHorizontal size={13} strokeWidth={1.3} />
-                Filters
+                Filtros
                 {activeFilterCount > 0 && (
                   <span className="flex h-4 min-w-4 items-center justify-center bg-black px-1 text-[7px] text-white">
                     {activeFilterCount}
@@ -1079,11 +1080,11 @@ export default function CarsBrowser({
                     <div className="mb-8 flex items-center justify-between border-b border-black/10 pb-5">
                       <div>
                         <p className="font-montserrat text-[8px] uppercase tracking-[0.25em] text-black/35">
-                          Refine
+                          Ajustar búsqueda
                         </p>
 
                         <h2 className="mt-1 font-bebas text-4xl leading-none">
-                          Filters
+                          Filtros
                         </h2>
                       </div>
 
@@ -1125,7 +1126,7 @@ export default function CarsBrowser({
                       onClick={() => setMobileFiltersOpen(false)}
                       className="mt-8 flex w-full cursor-pointer items-center justify-center gap-3 bg-black py-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.2em] text-white"
                     >
-                      View vehicles
+                      Ver vehículos
                       <ArrowUpRight size={14} strokeWidth={1.3} />
                     </button>
                   </motion.aside>
@@ -1165,7 +1166,7 @@ export default function CarsBrowser({
                   {!pagination.hasNextPage && (
                     <div className="mt-14 border-t border-black/10 pt-7 text-center">
                       <p className="font-montserrat text-[8px] uppercase tracking-[0.25em] text-black/30">
-                        You&apos;ve reached the end of the collection
+                        Has llegado al final de la selección
                       </p>
                     </div>
                   )}
@@ -1213,10 +1214,10 @@ function FilterPanel({
       <div className="flex items-center justify-between border-b border-black/10 py-5">
         <div>
           <p className="font-montserrat text-[8px] uppercase tracking-[0.25em] text-black/30">
-            Refine
+            Ajustar búsqueda
           </p>
 
-          <h2 className="mt-1 font-bebas text-3xl leading-none">Filters</h2>
+          <h2 className="mt-1 font-bebas text-3xl leading-none">Filtros</h2>
         </div>
 
         <button
@@ -1224,20 +1225,20 @@ function FilterPanel({
           onClick={resetFilters}
           className="cursor-pointer font-montserrat text-[8px] font-medium uppercase tracking-[0.16em] text-black/40 underline decoration-black/20 underline-offset-4 transition-colors duration-300 hover:text-black"
         >
-          Clear all
+          Borrar todo
         </button>
       </div>
 
       <div className="divide-y divide-black/10">
         <FilterSelect
-          label="Make"
+          label="Marca"
           value={make}
           onChange={(value) => handleFilterChange(setMake, "make", value)}
           options={MAKES}
         />
 
         <FilterSelect
-          label="Body type"
+          label="Tipo de carrocería"
           value={bodyType}
           onChange={(value) =>
             handleFilterChange(setBodyType, "bodyType", value)
@@ -1246,7 +1247,7 @@ function FilterPanel({
         />
 
         <FilterSelect
-          label="Fuel"
+          label="Combustible"
           value={fuelType}
           onChange={(value) =>
             handleFilterChange(setFuelType, "fuelType", value)
@@ -1255,7 +1256,7 @@ function FilterPanel({
         />
 
         <FilterSelect
-          label="Transmission"
+          label="Transmisión"
           value={transmission}
           onChange={(value) =>
             handleFilterChange(setTransmission, "transmission", value)
@@ -1264,7 +1265,7 @@ function FilterPanel({
         />
 
         <FilterSelect
-          label="Condition"
+          label="Estado"
           value={condition}
           onChange={(value) =>
             handleFilterChange(setCondition, "condition", value)
@@ -1274,7 +1275,7 @@ function FilterPanel({
 
         <div className="py-5">
           <label className="mb-3 block font-montserrat text-[8px] font-medium uppercase tracking-[0.2em] text-black/40">
-            Price
+            Precio
           </label>
 
           <div className="grid grid-cols-2 gap-2">
@@ -1286,7 +1287,7 @@ function FilterPanel({
               onBlur={(event) =>
                 handleRangeChange(setMinPrice, "minPrice", event.target.value)
               }
-              placeholder="Min"
+              placeholder="Mín."
               className="h-10 w-full border border-black/15 bg-white px-3 font-montserrat text-[10px] outline-none placeholder:text-black/25 focus:border-black"
             />
 
@@ -1298,7 +1299,7 @@ function FilterPanel({
               onBlur={(event) =>
                 handleRangeChange(setMaxPrice, "maxPrice", event.target.value)
               }
-              placeholder="Max"
+              placeholder="Máx."
               className="h-10 w-full border border-black/15 bg-white px-3 font-montserrat text-[10px] outline-none placeholder:text-black/25 focus:border-black"
             />
           </div>
@@ -1306,7 +1307,7 @@ function FilterPanel({
 
         <div className="py-5">
           <label className="mb-3 block font-montserrat text-[8px] font-medium uppercase tracking-[0.2em] text-black/40">
-            Year
+            Año
           </label>
 
           <div className="grid grid-cols-2 gap-2">
@@ -1317,7 +1318,7 @@ function FilterPanel({
               onBlur={(event) =>
                 handleRangeChange(setMinYear, "minYear", event.target.value)
               }
-              placeholder="From"
+              placeholder="Desde"
               className="h-10 w-full border border-black/15 bg-white px-3 font-montserrat text-[10px] outline-none placeholder:text-black/25 focus:border-black"
             />
 
@@ -1328,7 +1329,7 @@ function FilterPanel({
               onBlur={(event) =>
                 handleRangeChange(setMaxYear, "maxYear", event.target.value)
               }
-              placeholder="To"
+              placeholder="Hasta"
               className="h-10 w-full border border-black/15 bg-white px-3 font-montserrat text-[10px] outline-none placeholder:text-black/25 focus:border-black"
             />
           </div>
@@ -1355,11 +1356,11 @@ function FilterSelect({ label, value, onChange, options }) {
           onChange={(event) => onChange(event.target.value)}
           className="h-10 w-full cursor-pointer appearance-none border border-black/15 bg-white px-3 pr-8 font-montserrat text-[10px] text-black outline-none transition-colors duration-300 hover:border-black focus:border-black"
         >
-          <option value="">All {label.toLowerCase()}</option>
+          <option value="">Todos: {label.toLowerCase()}</option>
 
           {options.map((option) => (
             <option key={option} value={option}>
-              {option}
+              {translateVehicleTerm(option)}
             </option>
           ))}
         </select>
@@ -1383,7 +1384,7 @@ function InventoryCard({ car, index }) {
 
   const price = formatPrice(car.price, car.currency);
 
-  const mileage = new Intl.NumberFormat("en-US").format(car.mileage || 0);
+  const mileage = new Intl.NumberFormat("es-ES").format(car.mileage || 0);
 
   return (
     <motion.article
@@ -1416,7 +1417,7 @@ function InventoryCard({ car, index }) {
           ) : (
             <div className="flex h-full items-center justify-center">
               <span className="font-montserrat text-[9px] uppercase tracking-[0.2em] text-black/25">
-                No image available
+                Imagen no disponible
               </span>
             </div>
           )}
@@ -1425,7 +1426,7 @@ function InventoryCard({ car, index }) {
 
           <div className="absolute left-1 top-1 md:left-4 md:top-4">
             <span className="bg-white px-3 py-2 font-montserrat text-[8px] font-medium uppercase tracking-[0.16em] text-black">
-              {car.condition}
+              {translateVehicleTerm(car.condition)}
             </span>
           </div>
 
@@ -1475,11 +1476,11 @@ function InventoryCard({ car, index }) {
 
           <div className="mt-6 flex items-center justify-between">
             <span className="font-montserrat text-[8px] font-medium uppercase tracking-[0.18em] text-black/35">
-              View vehicle
+              Ver vehículo
             </span>
 
             <span className="font-montserrat text-[8px] uppercase tracking-[0.18em] text-black/25">
-              {car.stockNumber || "Available"}
+              {car.stockNumber || "Disponible"}
             </span>
           </div>
         </div>
@@ -1516,16 +1517,16 @@ function EmptyState({ onReset }) {
   return (
     <div className="flex min-h-[420px] flex-col items-center justify-center border-t border-black/10 text-center">
       <p className="font-montserrat text-[8px] font-medium uppercase tracking-[0.3em] text-black/30">
-        Collection
+        Selección
       </p>
 
       <h2 className="mt-4 font-bebas text-6xl leading-none tracking-[-0.03em] md:text-8xl">
-        No Cars Found
+        No se encontraron coches
       </h2>
 
       <p className="mt-5 max-w-md font-montserrat text-[10px] leading-[1.9] tracking-[0.04em] text-black/40 md:text-[11px]">
-        We could not find vehicles matching your current selection. Try
-        adjusting your filters to explore more of the collection.
+        No encontramos vehículos que coincidan con tu selección. Prueba a
+        cambiar los filtros para ver más opciones.
       </p>
 
       <button
@@ -1533,7 +1534,7 @@ function EmptyState({ onReset }) {
         onClick={onReset}
         className="group mt-8 inline-flex cursor-pointer items-center gap-3 bg-black px-6 py-3.5 font-montserrat text-[9px] font-medium uppercase tracking-[0.2em] text-white transition-all duration-300 hover:bg-black/80"
       >
-        Clear filters
+        Borrar filtros
         <ArrowUpRight
           size={14}
           strokeWidth={1.3}
@@ -1594,7 +1595,7 @@ function LoadingMoreIndicator() {
         <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-black/30" />
 
         <p className="font-montserrat text-[8px] font-medium uppercase tracking-[0.25em] text-black/35">
-          Loading more vehicles
+          Cargando más vehículos
         </p>
 
         <span className="h-2.5 w-2.5 animate-pulse rounded-full bg-black/30" />

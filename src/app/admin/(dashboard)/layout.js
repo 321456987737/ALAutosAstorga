@@ -11,7 +11,7 @@ export default function AdminLayout({
         <header className="sticky top-0 z-40 flex h-20 items-center justify-between border-b border-black/10 bg-white/90 px-5 backdrop-blur md:px-8">
           <div>
             <p className="text-sm font-semibold">
-              Dealership Management
+              Administración del concesionario
             </p>
 
             <p className="text-xs text-black/40">
@@ -23,7 +23,7 @@ export default function AdminLayout({
             href="/"
             className="rounded-full border border-black/10 px-4 py-2.5 text-sm font-medium transition hover:bg-black hover:text-white"
           >
-            Website
+            Sitio web
           </Link>
         </header>
 

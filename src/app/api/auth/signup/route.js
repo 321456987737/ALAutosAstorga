@@ -23,7 +23,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "All fields are required.",
+          message: "Todos los campos son obligatorios.",
         },
         {
           status: 400,
@@ -35,7 +35,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Invalid setup key.",
+          message: "La clave de configuración no es válida.",
         },
         {
           status: 403,
@@ -50,7 +50,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Name must contain at least 2 characters.",
+          message: "El nombre debe tener al menos 2 caracteres.",
         },
         {
           status: 400,
@@ -62,7 +62,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Password must contain at least 8 characters.",
+          message: "La contraseña debe tener al menos 8 caracteres.",
         },
         {
           status: 400,
@@ -80,7 +80,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Admin account has already been created.",
+          message: "La cuenta de administrador ya está creada.",
         },
         {
           status: 403,
@@ -96,7 +96,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "An account with this email already exists.",
+          message: "Ya existe una cuenta con este correo electrónico.",
         },
         {
           status: 409,
@@ -117,7 +117,7 @@ export async function POST(request) {
     return NextResponse.json(
       {
         success: true,
-        message: "Admin account created successfully.",
+        message: "La cuenta de administrador se ha creado correctamente.",
         user: {
           id: user._id.toString(),
           name: user.name,
@@ -135,7 +135,7 @@ export async function POST(request) {
     return NextResponse.json(
       {
         success: false,
-        message: "Something went wrong while creating the admin account.",
+        message: "Se ha producido un error al crear la cuenta de administrador.",
       },
       {
         status: 500,

@@ -131,7 +131,7 @@ export async function GET() {
     return NextResponse.json(
       {
         success: false,
-        message: "Failed to load admin dashboard",
+        message: "No se ha podido cargar el panel de administración.",
       },
       {
         status: 500,

@@ -2,8 +2,13 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { translateVehicleTerm } from "@/lib/localization";
 
 const STATUS_OPTIONS = ["New", "Contacted", "In Progress", "Closed"];
+
+function translateInquiryStatus(status) {
+  return status === "New" ? "Nueva" : translateVehicleTerm(status);
+}
 
 export default function AdminInquiriesPage() {
   const [inquiries, setInquiries] = useState([]);
@@ -54,7 +59,7 @@ export default function AdminInquiriesPage() {
       const result = await response.json();
 
       if (!response.ok || !result.success) {
-        throw new Error(result.message || "Failed to load inquiries");
+        throw new Error(result.message || "No se han podido cargar las consultas.");
       }
 
       setInquiries(result.data.inquiries);
@@ -63,7 +68,7 @@ export default function AdminInquiriesPage() {
     } catch (loadError) {
       console.error(loadError);
 
-      setError(loadError.message || "Failed to load inquiries");
+      setError(loadError.message || "No se han podido cargar las consultas.");
     } finally {
       setLoading(false);
     }
@@ -110,7 +115,7 @@ export default function AdminInquiriesPage() {
       const result = await response.json();
 
       if (!response.ok || !result.success) {
-        throw new Error(result.message || "Failed to update status");
+        throw new Error(result.message || "No se ha podido actualizar el estado.");
       }
 
       setInquiries((current) =>
@@ -135,7 +140,7 @@ export default function AdminInquiriesPage() {
     } catch (updateError) {
       console.error(updateError);
 
-      setError(updateError.message || "Failed to update status");
+      setError(updateError.message || "No se ha podido actualizar el estado.");
     } finally {
       setActionId(null);
     }
@@ -149,15 +154,15 @@ export default function AdminInquiriesPage() {
 
       <div className="mb-6 sm:mb-8">
         <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-black/35">
-          Customer leads
+          Consultas de clientes
         </p>
 
         <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
-          Inquiries
+          Consultas
         </h1>
 
         <p className="mt-2 max-w-2xl text-sm leading-6 text-black/45">
-          Manage messages from customers interested in your vehicles.
+          Gestiona los mensajes de clientes interesados en tus vehículos.
         </p>
       </div>
 
@@ -184,7 +189,7 @@ export default function AdminInquiriesPage() {
             type="text"
             value={search}
             onChange={(event) => setSearch(event.target.value)}
-            placeholder="Search customer, phone, email or message"
+            placeholder="Buscar por cliente, teléfono, correo o mensaje"
             className="h-11 w-full min-w-0 rounded-xl border border-black/15 px-4 text-sm outline-none placeholder:text-black/30 focus:border-black"
           />
 
@@ -193,11 +198,11 @@ export default function AdminInquiriesPage() {
             onChange={(event) => setStatus(event.target.value)}
             className="h-11 w-full min-w-0 rounded-xl border border-black/15 bg-white px-3 text-sm outline-none focus:border-black"
           >
-            <option value="">All statuses</option>
+            <option value="">Todos los estados</option>
 
             {STATUS_OPTIONS.map((option) => (
               <option key={option} value={option}>
-                {option}
+                {translateInquiryStatus(option)}
               </option>
             ))}
           </select>
@@ -206,7 +211,7 @@ export default function AdminInquiriesPage() {
             type="submit"
             className="h-11 w-full rounded-xl bg-black px-6 text-sm font-semibold text-white transition hover:bg-black/80 active:scale-[0.98] sm:col-span-2 lg:col-span-1"
           >
-            Search
+            Buscar
           </button>
         </form>
       </section>
@@ -220,11 +225,11 @@ export default function AdminInquiriesPage() {
 
         <div className="flex items-center justify-between border-b border-black/10 px-4 py-4 sm:px-6 sm:py-5">
           <div>
-            <h2 className="font-semibold">Customer inquiries</h2>
+            <h2 className="font-semibold">Consultas de clientes</h2>
 
             <p className="mt-1 text-xs text-black/40">
               {pagination.total}{" "}
-              {pagination.total === 1 ? "inquiry" : "inquiries"}
+              {pagination.total === 1 ? "consulta" : "consultas"}
             </p>
           </div>
         </div>
@@ -256,23 +261,23 @@ export default function AdminInquiriesPage() {
                 <thead>
                   <tr className="border-b border-black/10 text-left">
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-                      Customer
+                      Cliente
                     </th>
 
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-                      Vehicle
+                      Vehículo
                     </th>
 
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-                      Message
+                      Mensaje
                     </th>
 
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-                      Status
+                      Estado
                     </th>
 
                     <th className="px-6 py-4 text-right text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-                      Action
+                      Acción
                     </th>
                   </tr>
                 </thead>
@@ -328,7 +333,7 @@ export default function AdminInquiriesPage() {
                                   />
                                 ) : (
                                   <div className="flex h-full w-full items-center justify-center text-[9px] uppercase tracking-wider text-black/25">
-                                    No image
+                                    Sin imagen
                                   </div>
                                 )}
                               </div>
@@ -345,7 +350,7 @@ export default function AdminInquiriesPage() {
                             </Link>
                           ) : (
                             <span className="text-sm text-black/40">
-                              General inquiry
+                              Consulta general
                             </span>
                           )}
                         </td>
@@ -384,7 +389,7 @@ export default function AdminInquiriesPage() {
                             onClick={() => setSelectedInquiry(inquiry)}
                             className="rounded-lg border border-black/10 px-4 py-2 text-xs font-semibold transition hover:bg-black hover:text-white"
                           >
-                            View
+                            Ver
                           </button>
                         </td>
                       </tr>
@@ -435,7 +440,7 @@ export default function AdminInquiriesPage() {
                               : "bg-black/[0.05] text-black/55"
                           }`}
                         >
-                          {inquiry.status}
+                          {translateInquiryStatus(inquiry.status)}
                         </span>
                       </div>
                     </button>
@@ -457,7 +462,7 @@ export default function AdminInquiriesPage() {
                             />
                           ) : (
                             <div className="flex h-full w-full items-center justify-center text-[8px] uppercase text-black/25">
-                              No image
+                              Sin imagen
                             </div>
                           )}
                         </div>
@@ -474,7 +479,7 @@ export default function AdminInquiriesPage() {
                       </Link>
                     ) : (
                       <div className="mt-4 rounded-xl bg-black/[0.035] px-3 py-2.5 text-xs text-black/45">
-                        General inquiry
+                        Consulta general
                       </div>
                     )}
 
@@ -486,7 +491,7 @@ export default function AdminInquiriesPage() {
                       className="mt-4 block w-full rounded-xl border border-black/10 bg-white p-3 text-left"
                     >
                       <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-black/30">
-                        Message
+                        Mensaje
                       </p>
 
                       <p className="mt-1 line-clamp-3 text-xs leading-5 text-black/60">
@@ -509,7 +514,7 @@ export default function AdminInquiriesPage() {
                         onClick={() => setSelectedInquiry(inquiry)}
                         className="h-10 rounded-xl border border-black/10 px-4 text-xs font-semibold transition hover:bg-black hover:text-white"
                       >
-                        View
+                        Ver
                       </button>
                     </div>
                   </article>
@@ -532,7 +537,7 @@ export default function AdminInquiriesPage() {
             onClick={() => loadInquiries(pagination.page - 1)}
             className="rounded-full border border-black/10 bg-white px-3.5 py-2.5 text-xs font-medium transition hover:bg-black hover:text-white disabled:cursor-not-allowed disabled:opacity-35 sm:px-5 sm:py-3 sm:text-sm"
           >
-            Previous
+            Anterior
           </button>
 
           <div className="rounded-full bg-black px-3.5 py-2.5 text-xs font-semibold text-white sm:px-4 sm:py-3 sm:text-sm">
@@ -545,7 +550,7 @@ export default function AdminInquiriesPage() {
             onClick={() => loadInquiries(pagination.page + 1)}
             className="rounded-full border border-black/10 bg-white px-3.5 py-2.5 text-xs font-medium transition hover:bg-black hover:text-white disabled:cursor-not-allowed disabled:opacity-35 sm:px-5 sm:py-3 sm:text-sm"
           >
-            Next
+            Siguiente
           </button>
         </div>
       )}
@@ -584,7 +589,7 @@ function StatusSelect({ value, disabled, onChange, fullWidth = false }) {
     >
       {STATUS_OPTIONS.map((status) => (
         <option key={status} value={status}>
-          {status}
+          {translateInquiryStatus(status)}
         </option>
       ))}
     </select>
@@ -612,7 +617,7 @@ function InquiryModal({ inquiry, actionId, onClose, onStatusChange }) {
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
             <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-black/35 sm:text-xs">
-              Customer inquiry
+              Consulta del cliente
             </p>
 
             <h2 className="mt-2 truncate text-xl font-semibold tracking-tight sm:text-2xl">
@@ -624,7 +629,7 @@ function InquiryModal({ inquiry, actionId, onClose, onStatusChange }) {
             type="button"
             onClick={onClose}
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-black/10 text-sm transition hover:bg-black hover:text-white"
-            aria-label="Close inquiry"
+            aria-label="Cerrar consulta"
           >
             ×
           </button>
@@ -633,13 +638,13 @@ function InquiryModal({ inquiry, actionId, onClose, onStatusChange }) {
         {/* Info */}
 
         <div className="mt-6 grid gap-3 sm:mt-8 sm:grid-cols-2 sm:gap-4">
-          <InfoBlock label="Phone" value={inquiry.phone} />
+          <InfoBlock label="Teléfono" value={inquiry.phone} />
 
-          <InfoBlock label="Email" value={inquiry.email || "Not provided"} />
+          <InfoBlock label="Correo electrónico" value={inquiry.email || "No indicado"} />
 
-          <InfoBlock label="Source" value={inquiry.source} />
+          <InfoBlock label="Origen" value={inquiry.source} />
 
-          <InfoBlock label="Received" value={formatDate(inquiry.createdAt)} />
+          <InfoBlock label="Recibida" value={formatDate(inquiry.createdAt)} />
         </div>
 
         {/* Vehicle */}
@@ -647,7 +652,7 @@ function InquiryModal({ inquiry, actionId, onClose, onStatusChange }) {
         {inquiry.carId && (
           <div className="mt-5 rounded-2xl bg-black/[0.035] p-4 sm:mt-6 sm:p-5">
             <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-black/35 sm:text-xs">
-              Vehicle
+              Vehículo
             </p>
 
             <div className="mt-3 flex min-w-0 items-center justify-between gap-3 sm:mt-4 sm:gap-4">
@@ -678,7 +683,7 @@ function InquiryModal({ inquiry, actionId, onClose, onStatusChange }) {
                 target="_blank"
                 className="shrink-0 rounded-lg border border-black/10 px-3 py-2 text-xs font-semibold transition hover:bg-black hover:text-white"
               >
-                View
+                Ver
               </Link>
             </div>
           </div>
@@ -688,7 +693,7 @@ function InquiryModal({ inquiry, actionId, onClose, onStatusChange }) {
 
         <div className="mt-5 sm:mt-6">
           <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-black/35 sm:text-xs">
-            Message
+            Mensaje
           </p>
 
           <div className="mt-3 rounded-2xl border border-black/10 bg-white p-4 sm:p-5">
@@ -702,7 +707,7 @@ function InquiryModal({ inquiry, actionId, onClose, onStatusChange }) {
 
         <div className="mt-5 sm:mt-6">
           <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.15em] text-black/35 sm:text-xs">
-            Status
+            Estado
           </p>
 
           <StatusSelect
@@ -720,7 +725,7 @@ function InquiryModal({ inquiry, actionId, onClose, onStatusChange }) {
             href={`tel:${inquiry.phone}`}
             className="flex h-11 items-center justify-center rounded-full bg-black px-5 text-sm font-semibold text-white transition hover:bg-black/80"
           >
-            Call customer
+            Llamar al cliente
           </a>
 
           {inquiry.email && (
@@ -728,7 +733,7 @@ function InquiryModal({ inquiry, actionId, onClose, onStatusChange }) {
               href={`mailto:${inquiry.email}`}
               className="flex h-11 items-center justify-center rounded-full border border-black/10 px-5 text-sm font-semibold transition hover:bg-black hover:text-white"
             >
-              Email customer
+              Escribir al cliente
             </a>
           )}
 
@@ -737,7 +742,7 @@ function InquiryModal({ inquiry, actionId, onClose, onStatusChange }) {
             onClick={onClose}
             className="flex h-11 items-center justify-center rounded-full border border-black/10 px-5 text-sm font-semibold transition hover:bg-black hover:text-white"
           >
-            Close
+            Cerrar
           </button>
         </div>
       </div>
@@ -822,7 +827,7 @@ function LoadingCards() {
 function EmptyState() {
   return (
     <div className="px-5 py-16 text-center sm:px-6 sm:py-20">
-      <h3 className="text-lg font-semibold">No inquiries found</h3>
+      <h3 className="text-lg font-semibold">No se encontraron consultas</h3>
 
       <p className="mx-auto mt-2 max-w-sm text-sm leading-6 text-black/45">
         Customer inquiries will appear here when someone contacts the
@@ -841,7 +846,7 @@ function formatDate(value) {
     return "—";
   }
 
-  return new Intl.DateTimeFormat("en-US", {
+  return new Intl.DateTimeFormat("es-ES", {
     dateStyle: "medium",
     timeStyle: "short",
   }).format(new Date(value));

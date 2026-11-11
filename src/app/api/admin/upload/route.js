@@ -36,7 +36,7 @@ export async function POST(request) {
         {
           success: false,
           message:
-            "Please select at least one image",
+            "Selecciona al menos una imagen.",
         },
         { status: 400 }
       );
@@ -58,7 +58,7 @@ export async function POST(request) {
           {
             success: false,
             message:
-              "Only JPG, PNG and WebP images are allowed",
+              "Solo se permiten imágenes JPG, PNG y WebP.",
           },
           { status: 400 }
         );
@@ -69,7 +69,7 @@ export async function POST(request) {
           {
             success: false,
             message:
-              "Each image must be smaller than 10MB",
+              "Cada imagen debe pesar menos de 10 MB.",
           },
           { status: 400 }
         );
@@ -111,7 +111,7 @@ export async function POST(request) {
     return NextResponse.json({
       success: true,
       message:
-        "Images uploaded successfully",
+        "Las imágenes se han subido correctamente.",
 
       data: {
         images: uploadedImages,
@@ -173,7 +173,7 @@ export async function DELETE(request) {
         {
           success: false,
           message:
-            "No image public IDs were provided",
+            "No se han proporcionado identificadores públicos de imágenes.",
         },
         { status: 400 }
       );
@@ -184,7 +184,7 @@ export async function DELETE(request) {
         {
           success: false,
           message:
-            "You can delete a maximum of 100 images at once",
+            "Solo se pueden eliminar 100 imágenes como máximo a la vez.",
         },
         { status: 400 }
       );
@@ -197,7 +197,7 @@ export async function DELETE(request) {
     return NextResponse.json({
       success: true,
       message:
-        "Images deleted successfully",
+        "Las imágenes se han eliminado correctamente.",
     });
   } catch (error) {
     console.error(
@@ -209,7 +209,7 @@ export async function DELETE(request) {
       {
         success: false,
         message:
-          "Failed to delete images",
+          "No se han podido eliminar las imágenes.",
       },
       { status: 500 }
     );

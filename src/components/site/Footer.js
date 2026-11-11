@@ -16,23 +16,23 @@ import {
 
 const navigation = [
   {
-    label: "Home",
+    label: "Inicio",
     href: "/",
   },
   {
-    label: "Cars",
+    label: "Vehículos",
     href: "/cars",
   },
   {
-    label: "Services",
+    label: "Servicios",
     href: "/services",
   },
   {
-    label: "About",
+    label: "Nosotros",
     href: "/about",
   },
   {
-    label: "Contact",
+    label: "Contacto",
     href: "/contact",
   },
 ];
@@ -68,7 +68,7 @@ export default function Footer() {
                 }}
                 className="mb-5 font-montserrat text-[9px] font-medium uppercase tracking-[0.35em] text-white/30 md:text-[10px]"
               >
-                Your next car awaits
+                Tu próximo coche te espera
               </motion.p>
 
               <motion.h2
@@ -91,9 +91,9 @@ export default function Footer() {
                 }}
                 className="max-w-5xl font-bebas text-[clamp(4.5rem,10vw,10rem)] leading-[0.78] tracking-[-0.045em]"
               >
-                Find Your Next
+                Encuentra tu próximo
                 <br />
-                Drive.
+                viaje.
               </motion.h2>
             </div>
 
@@ -121,7 +121,7 @@ export default function Footer() {
                 href="/cars"
                 className="group inline-flex items-center gap-4 border border-white bg-white px-7 py-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.2em] text-black transition-all duration-300 hover:bg-transparent hover:text-white md:px-8 md:py-5"
               >
-                Explore inventory
+                Ver vehículos
 
                 <ArrowUpRight
                   size={15}
@@ -163,8 +163,8 @@ export default function Footer() {
             </Link>
 
             <p className="mt-5 max-w-sm font-montserrat text-[10px] leading-[1.9] tracking-[0.05em] text-white/30 md:text-[11px]">
-              Exceptional vehicles. Refined service. A collection built for
-              those who expect more from every drive.
+              Vehículos excepcionales. Atención cuidada. Una selección para
+              quienes esperan más de cada viaje.
             </p>
           </div>
 
@@ -174,7 +174,7 @@ export default function Footer() {
 
           <div>
             <p className="mb-6 font-montserrat text-[9px] font-medium uppercase tracking-[0.3em] text-white/25">
-              Explore
+              Explorar
             </p>
 
             <nav className="flex flex-col items-start">
@@ -206,13 +206,13 @@ export default function Footer() {
 
           <div>
             <p className="mb-6 font-montserrat text-[9px] font-medium uppercase tracking-[0.3em] text-white/25">
-              Visit
+              Visítanos
             </p>
 
             <div className="space-y-5">
               <div>
                 <p className="font-montserrat text-[9px] uppercase tracking-[0.16em] text-white/25">
-                  Showroom
+                  Concesionario
                 </p>
 
                 <a
@@ -233,7 +233,7 @@ export default function Footer() {
 
           <div>
             <p className="mb-6 font-montserrat text-[9px] font-medium uppercase tracking-[0.3em] text-white/25">
-              Contact
+              Contacto
             </p>
 
             <div className="space-y-4">
@@ -250,7 +250,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="block font-montserrat text-[10px] tracking-[0.05em] text-white/55 transition-colors duration-300 hover:text-white md:text-[11px]"
               >
-                Message us on WhatsApp
+                Escríbenos por WhatsApp
               </a>
             </div>
           </div>
@@ -279,7 +279,7 @@ export default function Footer() {
             }}
             className="group flex cursor-pointer items-center gap-2 font-montserrat text-[8px] uppercase tracking-[0.18em] text-white/30 transition-colors duration-300 hover:text-white"
           >
-            Back to top
+            Volver arriba
 
             <ArrowUpRight
               size={13}

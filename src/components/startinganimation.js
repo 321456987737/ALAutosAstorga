@@ -6,7 +6,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function CarStartup({
-  brand = "YOUR DEALERSHIP",
+  brand = "TU CONCESIONARIO",
   duration = 2600,
 }) {
   const [leaving, setLeaving] = useState(false);
@@ -46,7 +46,7 @@ export default function CarStartup({
   return (
     <motion.div
       role="status"
-      aria-label={`${brand} loading`}
+      aria-label={`Cargando ${brand}`}
       initial={{ opacity: 1 }}
       animate={{ opacity: leaving ? 0 : 1 }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
@@ -58,11 +58,11 @@ export default function CarStartup({
         {/* LOGO REVEAL */}
         <div className="relative w-44 sm:w-56">
           <motion.div className="mb-8 not-even:">
-            Welcome to
+            Te damos la bienvenida a
           </motion.div>
           <Image
             src="/logo.svg"
-            alt={`${brand} logo`}
+            alt={`Logotipo de ${brand}`}
             width={512}
             height={512}
             priority
@@ -118,7 +118,7 @@ export default function CarStartup({
           }}
           className="mt-3 font-montserrat text-[9px] font-medium uppercase tracking-[0.3em] text-white/45"
         >
-          FIND YOUR PERFECT DRIVE
+          ENCUENTRA EL COCHE PERFECTO PARA TI
         </motion.p>
 
       </div>

@@ -74,7 +74,7 @@ export function rateLimit(
     return NextResponse.json(
       {
         success: false,
-        message: `Too many requests. Please try again in ${retryAfter} seconds.`,
+        message: `Has realizado demasiadas solicitudes. Inténtalo de nuevo dentro de ${retryAfter} segundos.`,
       },
       { status: 429, headers }
     );

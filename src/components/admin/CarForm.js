@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { translateVehicleTerm } from "@/lib/localization";
 
 const BODY_TYPES = [
   "Sedan",
@@ -148,7 +149,7 @@ export default function CarForm({ initialData = null }) {
     const remainingSlots = MAX_IMAGES - images.length;
 
     if (remainingSlots <= 0) {
-      setError(`You can upload a maximum of ${MAX_IMAGES} images.`);
+      setError(`Puedes subir un máximo de ${MAX_IMAGES} imágenes.`);
       return;
     }
 
@@ -159,14 +160,14 @@ export default function CarForm({ initialData = null }) {
     );
 
     if (invalidFile) {
-      setError("Only JPG, PNG and WebP images are allowed.");
+      setError("Solo se permiten imágenes JPG, PNG y WebP.");
       return;
     }
 
     const tooLarge = filesToAdd.find((file) => file.size > 10 * 1024 * 1024);
 
     if (tooLarge) {
-      setError("Each image must be smaller than 10MB.");
+      setError("Cada imagen debe pesar menos de 10 MB.");
       return;
     }
 
@@ -205,9 +206,7 @@ export default function CarForm({ initialData = null }) {
 
     if (selectedFiles.length > remainingSlots) {
       setError(
-        `Only ${remainingSlots} image${
-          remainingSlots === 1 ? "" : "s"
-        } could be added because the maximum is ${MAX_IMAGES}.`,
+        `Solo se pudieron añadir ${remainingSlots} imágenes porque el máximo es ${MAX_IMAGES}.`,
       );
     }
   }
@@ -263,7 +262,7 @@ export default function CarForm({ initialData = null }) {
     const result = await response.json();
 
     if (!response.ok || !result.success) {
-      throw new Error(result.message || "Failed to upload images");
+      throw new Error(result.message || "No se han podido subir las imágenes.");
     }
 
     return result.data.images || [];
@@ -287,7 +286,7 @@ export default function CarForm({ initialData = null }) {
     const result = await response.json();
 
     if (!response.ok || !result.success) {
-      throw new Error(result.message || "Failed to delete images");
+      throw new Error(result.message || "No se han podido eliminar las imágenes.");
     }
   }
 
@@ -302,23 +301,23 @@ export default function CarForm({ initialData = null }) {
 
     try {
       if (!form.make.trim()) {
-        throw new Error("Make is required.");
+        throw new Error("La marca es obligatoria.");
       }
 
       if (!form.model.trim()) {
-        throw new Error("Model is required.");
+        throw new Error("El modelo es obligatorio.");
       }
 
       if (!form.year) {
-        throw new Error("Year is required.");
+        throw new Error("El año es obligatorio.");
       }
 
       if (!form.price) {
-        throw new Error("Price is required.");
+        throw new Error("El precio es obligatorio.");
       }
 
       if (images.length > MAX_IMAGES) {
-        throw new Error(`A maximum of ${MAX_IMAGES} images is allowed.`);
+        throw new Error(`Se permite un máximo de ${MAX_IMAGES} imágenes.`);
       }
 
       /*
@@ -345,7 +344,7 @@ export default function CarForm({ initialData = null }) {
        * Upload new files first.
        */
 
-      setSuccess("Uploading images...");
+      setSuccess("Subiendo imágenes...");
 
       const uploadedImages = await uploadNewImages();
 
@@ -426,7 +425,7 @@ export default function CarForm({ initialData = null }) {
         isFeatured: form.isFeatured,
       };
 
-      setSuccess(isEdit ? "Updating car..." : "Adding car...");
+      setSuccess(isEdit ? "Actualizando vehículo..." : "Añadiendo vehículo...");
 
       const endpoint = isEdit
         ? `/api/admin/cars/${initialData._id}`
@@ -446,7 +445,7 @@ export default function CarForm({ initialData = null }) {
 
       if (!response.ok || !result.success) {
         throw new Error(
-          result.message || `Failed to ${isEdit ? "update" : "create"} car`,
+          result.message || `No se ha podido ${isEdit ? "actualizar" : "crear"} el vehículo.`,
         );
       }
 
@@ -464,13 +463,13 @@ export default function CarForm({ initialData = null }) {
           console.error("Removed image cleanup error:", deleteError);
 
           cleanupWarning =
-            " The car was saved, but some removed images could not be deleted from Cloudinary.";
+            " El vehículo se guardó, pero no se pudieron eliminar algunas imágenes de Cloudinary.";
         }
       }
 
       setSuccess(
         `${
-          isEdit ? "Car updated successfully." : "Car added successfully."
+          isEdit ? "Vehículo actualizado correctamente." : "Vehículo añadido correctamente."
         }${cleanupWarning}`,
       );
 
@@ -496,7 +495,7 @@ export default function CarForm({ initialData = null }) {
 
       setSuccess("");
 
-      setError(submitError.message || "Something went wrong.");
+      setError(submitError.message || "Se ha producido un error.");
     } finally {
       setSubmitting(false);
     }
@@ -532,12 +531,12 @@ export default function CarForm({ initialData = null }) {
       ====================================================== */}
 
       <FormSection
-        title="Basic information"
-        description="Enter the main information customers will see about this vehicle."
+        title="Información básica"
+        description="Introduce la información principal que verán los clientes sobre este vehículo."
       >
         <div className="grid min-w-0 gap-5 sm:grid-cols-2">
           <InputField
-            label="Make"
+            label="Marca"
             name="make"
             value={form.make}
             onChange={handleChange}
@@ -546,7 +545,7 @@ export default function CarForm({ initialData = null }) {
           />
 
           <InputField
-            label="Model"
+            label="Modelo"
             name="model"
             value={form.model}
             onChange={handleChange}
@@ -555,7 +554,7 @@ export default function CarForm({ initialData = null }) {
           />
 
           <InputField
-            label="Year"
+            label="Año"
             name="year"
             type="number"
             value={form.year}
@@ -567,7 +566,7 @@ export default function CarForm({ initialData = null }) {
           />
 
           <InputField
-            label="Stock number"
+            label="Número de inventario"
             name="stockNumber"
             value={form.stockNumber}
             onChange={handleChange}
@@ -581,12 +580,12 @@ export default function CarForm({ initialData = null }) {
       ====================================================== */}
 
       <FormSection
-        title="Pricing & mileage"
-        description="Set the vehicle price and mileage information."
+        title="Precio y kilometraje"
+        description="Indica el precio y el kilometraje del vehículo."
       >
         <div className="grid min-w-0 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <InputField
-            label="Price"
+            label="Precio"
             name="price"
             type="number"
             value={form.price}
@@ -597,7 +596,7 @@ export default function CarForm({ initialData = null }) {
           />
 
           <SelectField
-            label="Currency"
+            label="Moneda"
             name="currency"
             value={form.currency}
             onChange={handleChange}
@@ -606,7 +605,7 @@ export default function CarForm({ initialData = null }) {
 
           <div className="grid min-w-0 grid-cols-2 gap-3">
             <InputField
-              label="Mileage"
+              label="Kilometraje"
               name="mileage"
               type="number"
               value={form.mileage}
@@ -616,7 +615,7 @@ export default function CarForm({ initialData = null }) {
             />
 
             <SelectField
-              label="Unit"
+              label="Unidad"
               name="mileageUnit"
               value={form.mileageUnit}
               onChange={handleChange}
@@ -631,12 +630,12 @@ export default function CarForm({ initialData = null }) {
       ====================================================== */}
 
       <FormSection
-        title="Vehicle specifications"
-        description="Add the specifications customers can use to compare vehicles."
+        title="Especificaciones del vehículo"
+        description="Añade las especificaciones que ayudarán a los clientes a comparar vehículos."
       >
         <div className="grid min-w-0 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <SelectField
-            label="Body type"
+            label="Tipo de carrocería"
             name="bodyType"
             value={form.bodyType}
             onChange={handleChange}
@@ -644,7 +643,7 @@ export default function CarForm({ initialData = null }) {
           />
 
           <SelectField
-            label="Fuel type"
+            label="Tipo de combustible"
             name="fuelType"
             value={form.fuelType}
             onChange={handleChange}
@@ -652,7 +651,7 @@ export default function CarForm({ initialData = null }) {
           />
 
           <SelectField
-            label="Transmission"
+            label="Transmisión"
             name="transmission"
             value={form.transmission}
             onChange={handleChange}
@@ -660,7 +659,7 @@ export default function CarForm({ initialData = null }) {
           />
 
           <SelectField
-            label="Condition"
+            label="Estado"
             name="condition"
             value={form.condition}
             onChange={handleChange}
@@ -668,7 +667,7 @@ export default function CarForm({ initialData = null }) {
           />
 
           <InputField
-            label="Engine"
+            label="Motor"
             name="engine"
             value={form.engine}
             onChange={handleChange}
@@ -676,7 +675,7 @@ export default function CarForm({ initialData = null }) {
           />
 
           <InputField
-            label="Exterior color"
+            label="Color exterior"
             name="exteriorColor"
             value={form.exteriorColor}
             onChange={handleChange}
@@ -684,7 +683,7 @@ export default function CarForm({ initialData = null }) {
           />
 
           <InputField
-            label="Interior color"
+            label="Color interior"
             name="interiorColor"
             value={form.interiorColor}
             onChange={handleChange}
@@ -698,8 +697,8 @@ export default function CarForm({ initialData = null }) {
       ====================================================== */}
 
       <FormSection
-        title="Description"
-        description="Write the description that will appear on the vehicle details page."
+        title="Descripción"
+        description="Escribe el texto que aparecerá en la página de detalles del vehículo."
       >
         <textarea
           name="description"
@@ -707,7 +706,7 @@ export default function CarForm({ initialData = null }) {
           onChange={handleChange}
           rows={7}
           maxLength={5000}
-          placeholder="Tell customers about this vehicle, its condition, history and notable details..."
+          placeholder="Describe el vehículo, su estado, historial y otros detalles importantes..."
           className="w-full min-w-0 resize-y rounded-xl border border-black/15 px-4 py-3.5 text-sm leading-6 outline-none transition placeholder:text-black/30 focus:border-black sm:px-4 sm:py-4"
         />
       </FormSection>
@@ -717,8 +716,8 @@ export default function CarForm({ initialData = null }) {
       ====================================================== */}
 
       <FormSection
-        title="Features & equipment"
-        description="Enter one feature per line."
+        title="Características y equipamiento"
+        description="Introduce una característica por línea."
       >
         <textarea
           name="features"
@@ -739,8 +738,8 @@ Panoramic roof`}
       ====================================================== */}
 
       <FormSection
-        title="Vehicle images"
-        description={`Upload up to ${MAX_IMAGES} images. The first image is used as the primary vehicle image.`}
+        title="Imágenes del vehículo"
+        description={`Sube hasta ${MAX_IMAGES} imágenes. La primera se utilizará como imagen principal del vehículo.`}
       >
         <div className="space-y-5">
           {/* Upload */}
@@ -751,11 +750,11 @@ Panoramic roof`}
             </div>
 
             <p className="mt-3 text-sm font-semibold sm:mt-4">
-              Choose vehicle images
+              Seleccionar imágenes del vehículo
             </p>
 
             <p className="mt-1 text-[11px] leading-5 text-black/40 sm:text-xs">
-              JPG, PNG or WebP · Maximum 10MB each
+              JPG, PNG o WebP · Máximo 10 MB por imagen
             </p>
 
             <input
@@ -771,12 +770,12 @@ Panoramic roof`}
 
           <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
             <p className="text-xs text-black/45">
-              {images.length} / {MAX_IMAGES} images selected
+              {images.length} / {MAX_IMAGES} imágenes seleccionadas
             </p>
 
             {images.length > 0 && (
               <p className="text-xs text-black/40">
-                First image = primary image
+                La primera imagen será la principal
               </p>
             )}
           </div>
@@ -802,14 +801,14 @@ Panoramic roof`}
                   {/* Primary */}
 
                   <div className="absolute left-3 top-3 rounded-full bg-white px-3 py-1.5 text-[10px] font-semibold shadow-sm sm:text-[11px]">
-                    Primary image
+                    Imagen principal
                   </div>
 
                   {/* Saved */}
 
                   {images[0].isExisting && (
                     <div className="absolute right-3 top-3 rounded-full bg-black px-3 py-1.5 text-[10px] font-semibold text-white sm:text-[11px]">
-                      Saved
+                      Guardada
                     </div>
                   )}
                 </div>
@@ -842,7 +841,7 @@ Panoramic roof`}
                     onClick={() => removeImage(0)}
                     className="rounded-lg border border-red-200 px-3 py-2 text-xs font-semibold text-red-600 transition hover:bg-red-600 hover:text-white disabled:opacity-40"
                   >
-                    Remove
+                    Eliminar
                   </button>
                 </div>
               </div>
@@ -880,7 +879,7 @@ Panoramic roof`}
 
                           {image.isExisting && (
                             <div className="absolute right-2 top-2 rounded-full bg-black px-2 py-1 text-[9px] font-semibold text-white sm:text-[10px]">
-                              Saved
+                              Guardada
                             </div>
                           )}
                         </div>
@@ -916,7 +915,7 @@ Panoramic roof`}
                             onClick={() => removeImage(index)}
                             className="rounded-md border border-red-200 px-2 py-1.5 text-[10px] font-semibold text-red-600 transition hover:bg-red-600 hover:text-white disabled:opacity-40"
                           >
-                            Remove
+                            Eliminar
                           </button>
                         </div>
                       </div>
@@ -934,12 +933,12 @@ Panoramic roof`}
       ====================================================== */}
 
       <FormSection
-        title="Inventory settings"
-        description="Control how this vehicle is displayed on the website."
+        title="Configuración del inventario"
+        description="Controla cómo se muestra este vehículo en el sitio web."
       >
         <div className="grid min-w-0 gap-5 md:grid-cols-2">
           <SelectField
-            label="Status"
+            label="Estado"
             name="status"
             value={form.status}
             onChange={handleChange}
@@ -957,11 +956,11 @@ Panoramic roof`}
 
             <span className="min-w-0">
               <span className="block text-sm font-semibold">
-                Featured vehicle
+                Vehículo destacado
               </span>
 
               <span className="mt-0.5 block text-xs leading-5 text-black/40">
-                Show this vehicle in the Home page featured section.
+                Mostrar este vehículo en la sección de destacados de la página de inicio.
               </span>
             </span>
           </label>
@@ -977,7 +976,7 @@ Panoramic roof`}
           href="/admin/cars"
           className="flex h-12 w-full items-center justify-center rounded-full border border-black/15 px-7 text-sm font-semibold transition hover:bg-black hover:text-white active:scale-[0.98] sm:w-auto"
         >
-          Cancel
+          Cancelar
         </Link>
 
         <button
@@ -987,11 +986,11 @@ Panoramic roof`}
         >
           {submitting
             ? isEdit
-              ? "Updating..."
-              : "Adding..."
+              ? "Actualizando..."
+              : "Añadiendo..."
             : isEdit
-              ? "Update Car"
-              : "Add Car"}
+              ? "Actualizar vehículo"
+              : "Añadir vehículo"}
         </button>
       </div>
     </form>
@@ -1079,7 +1078,7 @@ function SelectField({ label, name, value, onChange, options }) {
       >
         {options.map((option) => (
           <option key={option} value={option}>
-            {option}
+            {translateVehicleTerm(option)}
           </option>
         ))}
       </select>

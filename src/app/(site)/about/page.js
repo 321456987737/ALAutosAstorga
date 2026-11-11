@@ -21,7 +21,7 @@ export default function AboutPage() {
       <section className="relative h-[40dvh] min-h-[320px] overflow-hidden bg-[#e8e8e5] md:min-h-[440px]">
         <Image
           src="/images/cars/car1.jpg"
-          alt={`Vehicle from ${BUSINESS_NAME}`}
+          alt={`Vehículo de ${BUSINESS_NAME}`}
           fill
           priority
           sizes="100vw"
@@ -37,13 +37,13 @@ export default function AboutPage() {
         <div className="relative z-10 mx-auto flex h-full max-w-[1800px] items-end px-6 pb-10 md:px-10 md:pb-14 lg:px-14">
           <div className="max-w-4xl">
             <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-white/65 md:text-xs">
-              About us
+              Quiénes somos
             </p>
 
             <h1 className="mt-3 font-bebas text-6xl leading-[0.9] tracking-wide text-white md:text-8xl lg:text-9xl">
-              Built around
+              Pensado para
               <br />
-              the right car.a
+              encontrar tu coche ideal.
             </h1>
           </div>
         </div>
@@ -58,17 +58,17 @@ export default function AboutPage() {
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24">
             <div>
               <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-black/35 md:text-xs">
-                Who we are
+                Quiénes somos
               </p>
 
               <h2 className="mt-5 max-w-4xl font-bebas text-5xl leading-[0.95] tracking-wide md:text-7xl lg:text-8xl">
-                A dealership that keeps things simple.
+                Un concesionario que te lo pone fácil.
               </h2>
             </div>
 
             <div className="flex items-end">
               <p className="max-w-xl font-montserrat text-sm leading-7 text-black/55 md:text-base md:leading-8">
-                {BUSINESS_NAME} is a local car dealership in {BUSINESS_LOCATION}. Explore our current vehicles, ask our team a question or arrange a visit.
+                {BUSINESS_NAME} es un concesionario local en {BUSINESS_LOCATION}. Descubre nuestros vehículos, consulta tus dudas con el equipo o programa una visita.
               </p>
             </div>
           </div>
@@ -86,7 +86,7 @@ export default function AboutPage() {
             <div className="relative min-h-[380px] overflow-hidden bg-[#ededeb] md:min-h-[520px]">
               <Image
                 src="/images/cars/car2.jpg"
-                alt="Vehicle at the dealership"
+                alt="Vehículo en el concesionario"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover transition-transform duration-700 hover:scale-105"
@@ -96,7 +96,7 @@ export default function AboutPage() {
 
               <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10">
                 <span className="font-montserrat text-[9px] font-medium uppercase tracking-[0.25em] text-white drop-shadow-md">
-                  Our philosophy
+                  Nuestra filosofía
                 </span>
               </div>
             </div>
@@ -109,20 +109,20 @@ export default function AboutPage() {
                 </span>
 
                 <h2 className="mt-6 max-w-xl font-bebas text-5xl leading-[0.95] tracking-wide md:text-6xl lg:text-7xl">
-                  Your search should feel easy.
+                  Encontrar tu coche debería ser fácil.
                 </h2>
 
                 <div className="mt-8 max-w-xl space-y-5 font-montserrat text-sm leading-7 text-black/55">
                   <p>
-                    Finding your next vehicle should not feel complicated.
-                    That is why we focus on giving you the information you need
-                    and making it easy to connect with our team.
+                    Encontrar tu próximo vehículo no debería ser complicado.
+                    Por eso te ofrecemos la información que necesitas y
+                    facilitamos el contacto con nuestro equipo.
                   </p>
 
                   <p>
-                    Browse our current inventory, explore individual vehicles,
-                    arrange a test drive and speak directly with our dealership
-                    whenever you are ready.
+                    Consulta nuestro inventario, descubre cada vehículo,
+                    programa una prueba de conducción y habla directamente con
+                    nuestro equipo cuando quieras.
                   </p>
                 </div>
               </div>
@@ -133,7 +133,7 @@ export default function AboutPage() {
                 </div>
 
                 <span className="font-montserrat text-[10px] font-medium uppercase tracking-[0.2em] text-black/45">
-                  Simple by design
+                  Sencillo por diseño
                 </span>
               </div>
             </div>
@@ -151,18 +151,18 @@ export default function AboutPage() {
             {/* LEFT */}
             <div>
               <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-black/35 md:text-xs">
-                Our approach
+                Nuestra forma de trabajar
               </p>
 
               <h2 className="mt-5 font-bebas text-6xl leading-[0.9] tracking-wide md:text-8xl">
-                What
+                Lo que
                 <br />
-                matters.
+                importa.
               </h2>
 
               <p className="mt-7 max-w-sm font-montserrat text-sm leading-7 text-black/50">
-                We believe a good dealership experience starts with clarity,
-                honest communication and vehicles worth considering.
+                Creemos que una buena experiencia empieza con claridad,
+                comunicación honesta y vehículos que merecen la pena.
               </p>
             </div>
 
@@ -171,29 +171,29 @@ export default function AboutPage() {
               <AboutFeature
                 number="01"
                 icon={CarFront}
-                title="Quality vehicles"
-                description="We showcase vehicles currently available through our dealership with the details you need to make an informed decision."
+                title="Vehículos de calidad"
+                description="Presentamos los vehículos disponibles en nuestro concesionario con los detalles que necesitas para decidir con confianza."
               />
 
               <AboutFeature
                 number="02"
                 icon={ShieldCheck}
-                title="Straightforward service"
-                description="From your first question to your test drive, our goal is to keep the process clear and comfortable."
+                title="Atención cercana"
+                description="Desde tu primera consulta hasta la prueba de conducción, nuestro objetivo es que todo sea claro y cómodo."
               />
 
               <AboutFeature
                 number="03"
                 icon={Users}
-                title="Personal attention"
-                description="Every customer has different needs. Our team is here to understand what you're looking for."
+                title="Atención personalizada"
+                description="Cada cliente tiene necesidades distintas. Nuestro equipo está aquí para entender qué buscas."
               />
 
               <AboutFeature
                 number="04"
                 icon={MapPin}
-                title="Local dealership"
-                description={`Visit us in ${BUSINESS_LOCATION}, explore our vehicles and speak directly with our team.`}
+                title="Concesionario local"
+                description={`Visítanos en ${BUSINESS_LOCATION}, descubre nuestros vehículos y habla directamente con nuestro equipo.`}
               />
             </div>
           </div>
@@ -209,37 +209,37 @@ export default function AboutPage() {
           <div className="grid gap-16 lg:grid-cols-[0.75fr_1.25fr] lg:gap-24">
             <div>
               <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-white/35 md:text-xs">
-                Why choose us
+                Por qué elegirnos
               </p>
 
               <h2 className="mt-5 max-w-lg font-bebas text-6xl leading-[0.9] tracking-wide md:text-8xl">
-                Less
+                Menos
                 <br />
-                complication.
+                complicaciones.
                 <br />
-                More clarity.
+                más claridad.
               </h2>
             </div>
 
             <div className="grid gap-10 sm:grid-cols-2">
               <ValueItem
-                title="Transparent"
-                description="Clear vehicle information and a straightforward way to get in touch."
+                title="Transparencia"
+                description="Información clara sobre los vehículos y una forma sencilla de contactar."
               />
 
               <ValueItem
-                title="Customer focused"
-                description="We take the time to understand what you're actually looking for."
+                title="Centrados en ti"
+                description="Nos tomamos el tiempo necesario para entender qué estás buscando."
               />
 
               <ValueItem
-                title="Convenient"
-                description="Explore inventory online before making the trip to the dealership."
+                title="Comodidad"
+                description="Consulta el inventario en línea antes de venir al concesionario."
               />
 
               <ValueItem
-                title="Local"
-                description="A real dealership and a real team ready to help."
+                title="Cercanía"
+                description="Un concesionario de verdad y un equipo dispuesto a ayudarte."
               />
             </div>
           </div>
@@ -260,18 +260,18 @@ export default function AboutPage() {
 
             <div className="relative z-10 max-w-3xl">
               <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-black/35 md:text-xs">
-                Find your next car
+                Encuentra tu próximo coche
               </p>
 
               <h2 className="mt-5 font-bebas text-6xl leading-[0.9] tracking-wide md:text-8xl">
-                Ready to find
+                ¿Preparado para
                 <br />
-                your vehicle?
+                encontrar tu vehículo?
               </h2>
 
               <p className="mt-6 max-w-xl font-montserrat text-sm leading-7 text-black/50 md:text-base">
-                Explore our current inventory and discover the vehicles
-                available through {BUSINESS_NAME}.
+                Explora nuestro inventario y descubre los vehículos
+                disponibles en {BUSINESS_NAME}.
               </p>
 
               <div className="mt-9 flex flex-wrap gap-3">
@@ -279,7 +279,7 @@ export default function AboutPage() {
                   href="/cars"
                   className="group inline-flex items-center gap-4 bg-black px-6 py-4 font-montserrat text-[10px] font-semibold uppercase tracking-[0.18em] text-white transition-colors hover:bg-black/80"
                 >
-                  Browse inventory
+                  Ver vehículos
 
                   <ArrowUpRight
                     size={16}
@@ -292,7 +292,7 @@ export default function AboutPage() {
                   href="/contact"
                   className="group inline-flex items-center gap-4 border border-black/15 bg-white px-6 py-4 font-montserrat text-[10px] font-semibold uppercase tracking-[0.18em] text-black transition-colors hover:border-black/30"
                 >
-                  Contact us
+                  Contactar
 
                   <ArrowUpRight
                     size={16}

@@ -31,7 +31,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Please enter your name",
+          message: "Introduce tu nombre.",
         },
         { status: 400 }
       );
@@ -41,7 +41,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Name must be at least 2 characters",
+          message: "El nombre debe tener al menos 2 caracteres.",
         },
         { status: 400 }
       );
@@ -51,7 +51,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Please enter your phone number",
+          message: "Introduce tu número de teléfono.",
         },
         { status: 400 }
       );
@@ -61,7 +61,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Please select a date",
+          message: "Selecciona una fecha.",
         },
         { status: 400 }
       );
@@ -71,7 +71,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Please select a time",
+          message: "Selecciona una hora.",
         },
         { status: 400 }
       );
@@ -81,7 +81,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Vehicle is required",
+          message: "Debes seleccionar un vehículo.",
         },
         { status: 400 }
       );
@@ -91,7 +91,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Invalid vehicle",
+          message: "El vehículo no es válido.",
         },
         { status: 400 }
       );
@@ -108,7 +108,7 @@ export async function POST(request) {
         return NextResponse.json(
           {
             success: false,
-            message: "Please enter a valid email address",
+            message: "Introduce una dirección de correo electrónico válida.",
           },
           { status: 400 }
         );
@@ -127,7 +127,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Vehicle not found",
+          message: "No se ha encontrado el vehículo.",
         },
         { status: 404 }
       );
@@ -142,7 +142,7 @@ export async function POST(request) {
         {
           success: false,
           message:
-            "This vehicle is no longer available for a test drive",
+            "Este vehículo ya no está disponible para pruebas de conducción.",
         },
         { status: 400 }
       );
@@ -168,7 +168,7 @@ export async function POST(request) {
         {
           success: false,
           message:
-            "That time is already requested for this vehicle. Please choose another time.",
+            "Ese horario ya se ha solicitado para este vehículo. Elige otro horario.",
         },
         { status: 409 }
       );
@@ -197,7 +197,7 @@ export async function POST(request) {
       {
         success: true,
         message:
-          "Your test drive request has been submitted successfully.",
+          "Tu solicitud de prueba de conducción se ha enviado correctamente.",
         data: {
           testDriveId: testDrive._id,
         },
@@ -210,7 +210,7 @@ export async function POST(request) {
     return NextResponse.json(
       {
         success: false,
-        message: "Something went wrong. Please try again.",
+        message: "Se ha producido un error. Inténtalo de nuevo.",
       },
       { status: 500 }
     );

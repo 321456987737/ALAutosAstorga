@@ -5,10 +5,11 @@ import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { ArrowUpRight, RefreshCw } from "lucide-react";
 import { motion } from "framer-motion";
+import { translateVehicleTerm } from "@/lib/localization";
 
 function formatPrice(price, currency) {
   if (typeof price !== "number") {
-    return "Price on request";
+    return "Precio a consultar";
   }
 
   try {
@@ -18,7 +19,7 @@ function formatPrice(price, currency) {
       maximumFractionDigits: 0,
     }).format(price);
   } catch {
-    return `${currency || "USD"} ${price.toLocaleString("en-US")}`;
+    return `${currency || "USD"} ${price.toLocaleString("es-ES")}`;
   }
 }
 
@@ -37,7 +38,7 @@ function VehicleCard({ car, index }) {
   const imageAlt =
     car.images?.find((image) => image?.url)?.alt ||
     title ||
-    "Vehicle in the showroom";
+    "Vehículo en el concesionario";
 
   return (
     <motion.article
@@ -53,7 +54,7 @@ function VehicleCard({ car, index }) {
       <Link
         href={car._id ? `/cars/${car._id}` : "/cars"}
         className="block h-full"
-        aria-label={`View ${title}`}
+        aria-label={`Ver ${title}`}
       >
         {/* Vehicle image */}
         <div className="relative aspect-[4/3] overflow-hidden border border-white/10 bg-white/[0.035]">
@@ -68,7 +69,7 @@ function VehicleCard({ car, index }) {
           <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/10" />
 
           <span className="absolute left-1 top-1 border border-white/20 bg-black/45 px-2 py-1 font-montserrat text-[8px] font-medium uppercase tracking-[0.18em] text-white/90 backdrop-blur-sm">
-            {car.condition || "New arrival"}
+            {translateVehicleTerm(car.condition || "Recién llegado")}
           </span>
 
           <span className="absolute bottom-2 right-2 flex h-6 w-6 items-center justify-center border border-white/25 bg-black/35 text-white backdrop-blur-sm transition-colors duration-300 group-hover:bg-white group-hover:text-black">
@@ -79,11 +80,11 @@ function VehicleCard({ car, index }) {
         {/* Vehicle details */}
         <div className="border-x border-b border-white/10 p-5 sm:p-6">
           <p className="mb-2 truncate font-montserrat text-[8px] font-medium uppercase tracking-[0.25em] text-white/40 sm:text-[9px]">
-            {car.make || "Selected vehicle"}
+            {car.make || "Vehículo seleccionado"}
           </p>
 
           <h3 className="font-bebas text-3xl leading-[0.95] tracking-[-0.025em] text-white sm:text-4xl">
-            {car.model || "Vehicle details"}
+            {car.model || "Detalles del vehículo"}
           </h3>
 
           <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 font-montserrat text-[8px] uppercase tracking-[0.14em] text-white/40">
@@ -93,7 +94,7 @@ function VehicleCard({ car, index }) {
               <>
                 <span className="h-[3px] w-[3px] rounded-full bg-white/25" />
                 <span>
-                  {Number(car.mileage).toLocaleString("en-US")}{" "}
+                  {Number(car.mileage).toLocaleString("es-ES")}{" "}
                   {car.mileageUnit || "km"}
                 </span>
               </>
@@ -109,7 +110,7 @@ function VehicleCard({ car, index }) {
 
           <div className="mt-6 flex items-end justify-between gap-3 border-t border-white/10 pt-5">
             <span className="font-montserrat text-[8px] uppercase tracking-[0.2em] text-white/35">
-              Price
+              Precio
             </span>
 
             <span className="text-right font-montserrat text-sm font-medium tracking-[0.01em] text-white">
@@ -164,7 +165,7 @@ export default function LatestArrivals() {
 
       if (!response.ok || !result.success) {
         throw new Error(
-          result.message || "Unable to load latest arrivals."
+          result.message || "No se han podido cargar las últimas novedades."
         );
       }
 
@@ -182,7 +183,7 @@ export default function LatestArrivals() {
       console.error("Latest arrivals fetch error:", fetchError);
 
       setError(
-        "We couldn't load the latest arrivals. Please try again."
+        "No se han podido cargar las últimas novedades. Inténtalo de nuevo."
       );
 
       setStatus("error");
@@ -220,7 +221,7 @@ useEffect(() => {
               transition={{ duration: 0.4 }}
               className="mb-3 font-montserrat text-[9px] font-medium uppercase tracking-[0.32em] text-white/40 md:text-[10px]"
             >
-              Just added to the collection
+              Recién llegados
             </motion.p>
 
             <motion.h2
@@ -230,7 +231,7 @@ useEffect(() => {
               transition={{ duration: 0.5, delay: 0.04 }}
               className="font-bebas text-5xl leading-[0.88] tracking-[-0.035em] sm:text-6xl md:text-7xl lg:text-[clamp(5rem,7vw,7.5rem)]"
             >
-              Latest arrivals
+              Últimas novedades
             </motion.h2>
           </div>
 
@@ -238,7 +239,7 @@ useEffect(() => {
             href="/cars"
             className="group inline-flex w-fit items-center gap-3 border-b border-white/25 pb-2 font-montserrat text-[9px] font-semibold uppercase tracking-[0.18em] text-white/65 transition-colors duration-300 hover:border-white hover:text-white"
           >
-            View all vehicles
+            Ver todos los vehículos
 
             <ArrowUpRight
               size={15}
@@ -271,21 +272,21 @@ useEffect(() => {
               className="mt-5 inline-flex items-center gap-2 border border-white/25 px-5 py-3 font-montserrat text-[9px] font-semibold uppercase tracking-[0.16em] transition-colors duration-300 hover:border-white hover:bg-white hover:text-black"
             >
               <RefreshCw size={13} strokeWidth={1.5} />
-              Try again
+              Reintentar
             </button>
           </div>
         ) : status === "empty" ? (
           /* Empty state */
           <div className="flex min-h-64 flex-col items-center justify-center border border-white/10 px-6 text-center">
             <p className="font-montserrat text-[10px] uppercase tracking-[0.2em] text-white/45">
-              No new vehicles are available right now.
+              No hay vehículos nuevos disponibles en este momento.
             </p>
 
             <Link
               href="/cars"
               className="mt-5 border-b border-white/30 pb-2 font-montserrat text-[9px] font-semibold uppercase tracking-[0.18em] text-white/70 transition-colors hover:border-white hover:text-white"
             >
-              Browse all inventory
+              Ver todo el inventario
             </Link>
           </div>
         ) : (
@@ -310,7 +311,7 @@ useEffect(() => {
             href="/cars"
             className="group inline-flex min-h-12 items-center justify-center gap-3 border border-white/30 px-6 py-4 font-montserrat text-[9px] font-semibold uppercase tracking-[0.2em] text-white transition-colors duration-300 hover:border-white hover:bg-white hover:text-black sm:px-8"
           >
-            Discover all vehicles
+            Descubrir todos los vehículos
 
             <ArrowUpRight
               size={15}

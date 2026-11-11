@@ -26,7 +26,7 @@ export async function GET(
       return NextResponse.json(
         {
           success: false,
-          message: "Invalid test drive ID",
+          message: "El identificador de la prueba de conducción no es válido.",
         },
         { status: 400 }
       );
@@ -45,7 +45,7 @@ export async function GET(
       return NextResponse.json(
         {
           success: false,
-          message: "Test drive not found",
+          message: "No se ha encontrado la prueba de conducción.",
         },
         { status: 404 }
       );
@@ -67,7 +67,7 @@ export async function GET(
       {
         success: false,
         message:
-          "Failed to load test drive",
+          "No se ha podido cargar la prueba de conducción.",
       },
       { status: 500 }
     );
@@ -89,7 +89,7 @@ export async function PATCH(
       return NextResponse.json(
         {
           success: false,
-          message: "Invalid test drive ID",
+          message: "El identificador de la prueba de conducción no es válido.",
         },
         { status: 400 }
       );
@@ -107,7 +107,7 @@ export async function PATCH(
         {
           success: false,
           message:
-            "Invalid test drive status",
+            "El estado de la prueba de conducción no es válido.",
         },
         { status: 400 }
       );
@@ -137,7 +137,7 @@ export async function PATCH(
       return NextResponse.json(
         {
           success: false,
-          message: "Test drive not found",
+          message: "No se ha encontrado la prueba de conducción.",
         },
         { status: 404 }
       );
@@ -146,7 +146,7 @@ export async function PATCH(
     return NextResponse.json({
       success: true,
       message:
-        "Test drive status updated successfully",
+        "El estado de la prueba de conducción se ha actualizado correctamente.",
       data: {
         testDrive,
       },
@@ -161,7 +161,7 @@ export async function PATCH(
       {
         success: false,
         message:
-          "Failed to update test drive",
+          "No se ha podido actualizar la prueba de conducción.",
       },
       { status: 500 }
     );

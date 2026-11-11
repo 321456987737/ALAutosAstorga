@@ -3,6 +3,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { translateVehicleTerm } from "@/lib/localization";
 
 export default function AdminCarsPage() {
   const [cars, setCars] = useState([]);
@@ -59,7 +60,7 @@ export default function AdminCarsPage() {
 
       if (!response.ok || !result.success) {
         throw new Error(
-          result.message || "Failed to load inventory",
+          result.message || "No se ha podido cargar el inventario.",
         );
       }
 
@@ -69,7 +70,7 @@ export default function AdminCarsPage() {
       console.error(loadError);
 
       setError(
-        loadError.message || "Failed to load inventory",
+        loadError.message || "No se ha podido cargar el inventario.",
       );
     } finally {
       setLoading(false);
@@ -111,7 +112,7 @@ export default function AdminCarsPage() {
 
       if (!response.ok || !result.success) {
         throw new Error(
-          result.message || "Failed to update status",
+          result.message || "No se ha podido actualizar el estado.",
         );
       }
 
@@ -130,7 +131,7 @@ export default function AdminCarsPage() {
 
       setError(
         updateError.message ||
-          "Failed to update status",
+          "No se ha podido actualizar el estado.",
       );
     } finally {
       setActionId(null);
@@ -160,7 +161,7 @@ export default function AdminCarsPage() {
       if (!response.ok || !result.success) {
         throw new Error(
           result.message ||
-            "Failed to update featured status",
+            "No se ha podido actualizar el estado de destacados.",
         );
       }
 
@@ -179,7 +180,7 @@ export default function AdminCarsPage() {
 
       setError(
         toggleError.message ||
-          "Failed to update featured status",
+          "No se ha podido actualizar el estado de destacados.",
       );
     } finally {
       setActionId(null);
@@ -188,7 +189,7 @@ export default function AdminCarsPage() {
 
   async function deleteCar(carId) {
     const confirmed = window.confirm(
-      "Are you sure you want to delete this vehicle? This action cannot be undone.",
+      "¿Seguro que quieres eliminar este vehículo? Esta acción no se puede deshacer.",
     );
 
     if (!confirmed) {
@@ -210,7 +211,7 @@ export default function AdminCarsPage() {
 
       if (!response.ok || !result.success) {
         throw new Error(
-          result.message || "Failed to delete car",
+          result.message || "No se ha podido eliminar el vehículo.",
         );
       }
 
@@ -226,7 +227,7 @@ export default function AdminCarsPage() {
       console.error(deleteError);
 
       setError(
-        deleteError.message || "Failed to delete car",
+        deleteError.message || "No se ha podido eliminar el vehículo.",
       );
     } finally {
       setActionId(null);
@@ -242,15 +243,15 @@ export default function AdminCarsPage() {
       <div className="mb-6 flex flex-col gap-5 sm:mb-8 sm:flex-row sm:items-end sm:justify-between">
         <div className="min-w-0">
           <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-black/35">
-            Inventory
+            Inventario
           </p>
 
           <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
-            Cars
+            Vehículos
           </h1>
 
           <p className="mt-2 max-w-xl text-sm leading-6 text-black/45">
-            Manage every vehicle on the dealership website.
+            Gestiona todos los vehículos de la web del concesionario.
           </p>
         </div>
 
@@ -258,7 +259,7 @@ export default function AdminCarsPage() {
           href="/admin/cars/new"
           className="inline-flex w-full shrink-0 items-center justify-center rounded-full bg-black px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-black/80 active:scale-[0.98] sm:w-auto"
         >
-          + Add Car
+          + Añadir vehículo
         </Link>
       </div>
 
@@ -287,7 +288,7 @@ export default function AdminCarsPage() {
             onChange={(event) =>
               setSearch(event.target.value)
             }
-            placeholder="Search make, model or stock number"
+            placeholder="Buscar marca, modelo o número de inventario"
             className="h-11 w-full min-w-0 rounded-xl border border-black/15 px-4 text-sm outline-none placeholder:text-black/30 focus:border-black"
           />
 
@@ -298,10 +299,10 @@ export default function AdminCarsPage() {
             }
             className="h-11 w-full min-w-0 rounded-xl border border-black/15 bg-white px-3 text-sm outline-none focus:border-black"
           >
-            <option value="">All statuses</option>
-            <option value="Available">Available</option>
-            <option value="Reserved">Reserved</option>
-            <option value="Sold">Sold</option>
+            <option value="">Todos los estados</option>
+            <option value="Available">Disponible</option>
+            <option value="Reserved">Reservado</option>
+            <option value="Sold">Vendido</option>
           </select>
 
           <select
@@ -311,9 +312,9 @@ export default function AdminCarsPage() {
             }
             className="h-11 w-full min-w-0 rounded-xl border border-black/15 bg-white px-3 text-sm outline-none focus:border-black"
           >
-            <option value="">All conditions</option>
-            <option value="New">New</option>
-            <option value="Used">Used</option>
+            <option value="">Todas las condiciones</option>
+            <option value="New">Nuevo</option>
+            <option value="Used">Usado</option>
           </select>
 
           <select
@@ -323,23 +324,23 @@ export default function AdminCarsPage() {
             }
             className="h-11 w-full min-w-0 rounded-xl border border-black/15 bg-white px-3 text-sm outline-none focus:border-black"
           >
-            <option value="newest">Newest first</option>
-            <option value="oldest">Oldest first</option>
+            <option value="newest">Más recientes</option>
+            <option value="oldest">Más antiguos</option>
             <option value="price-low">
-              Price: Low to High
+              Precio: de menor a mayor
             </option>
             <option value="price-high">
-              Price: High to Low
+              Precio: de mayor a menor
             </option>
-            <option value="year-new">Newest year</option>
-            <option value="year-old">Oldest year</option>
+            <option value="year-new">Año más reciente</option>
+            <option value="year-old">Año más antiguo</option>
           </select>
 
           <button
             type="submit"
             className="h-11 w-full rounded-xl bg-black px-5 text-sm font-semibold text-white transition hover:bg-black/80 active:scale-[0.98] sm:col-span-2 lg:col-span-1"
           >
-            Search
+            Buscar
           </button>
         </form>
       </section>
@@ -353,13 +354,13 @@ export default function AdminCarsPage() {
 
         <div className="flex items-center justify-between border-b border-black/10 px-4 py-4 sm:px-6 sm:py-5">
           <div>
-            <h2 className="font-semibold">Inventory</h2>
+            <h2 className="font-semibold">Inventario</h2>
 
             <p className="mt-1 text-xs text-black/40">
               {pagination.total}{" "}
               {pagination.total === 1
-                ? "vehicle"
-                : "vehicles"}
+                ? "vehículo"
+                : "vehículos"}
             </p>
           </div>
         </div>
@@ -389,27 +390,27 @@ export default function AdminCarsPage() {
                 <thead>
                   <tr className="border-b border-black/10 text-left">
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-                      Vehicle
+                      Vehículo
                     </th>
 
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-                      Price
+                      Precio
                     </th>
 
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-                      Mileage
+                      Kilometraje
                     </th>
 
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-                      Status
+                      Estado
                     </th>
 
                     <th className="px-6 py-4 text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-                      Featured
+                      Destacado
                     </th>
 
                     <th className="px-6 py-4 text-right text-xs font-semibold uppercase tracking-[0.12em] text-black/35">
-                      Actions
+                      Acciones
                     </th>
                   </tr>
                 </thead>
@@ -515,7 +516,7 @@ export default function AdminCarsPage() {
                           />
                         ) : (
                           <div className="flex h-full w-full items-center justify-center text-[10px] font-medium uppercase tracking-wider text-black/25">
-                            No image
+                            Sin imagen
                           </div>
                         )}
                       </div>
@@ -528,7 +529,7 @@ export default function AdminCarsPage() {
                             </p>
 
                             <p className="mt-1 text-xs text-black/40">
-                              {car.year} · {car.condition}
+                              {car.year} · {translateVehicleTerm(car.condition)}
                             </p>
 
                             {car.stockNumber && (
@@ -540,7 +541,7 @@ export default function AdminCarsPage() {
 
                           {car.isFeatured && (
                             <span className="shrink-0 rounded-full bg-black px-2.5 py-1 text-[10px] font-semibold text-white">
-                              Featured
+                              Destacado
                             </span>
                           )}
                         </div>
@@ -557,7 +558,7 @@ export default function AdminCarsPage() {
                     <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-3">
                       <div className="rounded-xl bg-black/[0.035] px-3 py-2.5">
                         <p className="text-[10px] uppercase tracking-wider text-black/35">
-                          Mileage
+                          Kilometraje
                         </p>
 
                         <p className="mt-1 text-xs font-semibold">
@@ -568,7 +569,7 @@ export default function AdminCarsPage() {
 
                       <div className="rounded-xl bg-black/[0.035] px-3 py-2.5">
                         <p className="text-[10px] uppercase tracking-wider text-black/35">
-                          Status
+                          Estado
                         </p>
 
                         <div className="mt-1">
@@ -620,7 +621,7 @@ export default function AdminCarsPage() {
                         }
                         className="h-10 rounded-xl border border-red-200 text-xs font-semibold text-red-600 transition hover:bg-red-600 hover:text-white disabled:cursor-not-allowed disabled:opacity-40 active:scale-[0.98]"
                       >
-                        {busy ? "Working..." : "Delete"}
+                        {busy ? "Procesando..." : "Eliminar"}
                       </button>
                     </div>
                   </div>
@@ -645,7 +646,7 @@ export default function AdminCarsPage() {
             }
             className="rounded-full border border-black/10 bg-white px-3.5 py-2.5 text-xs font-medium transition hover:bg-black hover:text-white disabled:cursor-not-allowed disabled:opacity-35 sm:px-5 sm:py-3 sm:text-sm"
           >
-            Previous
+            Anterior
           </button>
 
           <div className="rounded-full bg-black px-3.5 py-2.5 text-xs font-semibold text-white sm:px-4 sm:py-3 sm:text-sm">
@@ -660,7 +661,7 @@ export default function AdminCarsPage() {
             }
             className="rounded-full border border-black/10 bg-white px-3.5 py-2.5 text-xs font-medium transition hover:bg-black hover:text-white disabled:cursor-not-allowed disabled:opacity-35 sm:px-5 sm:py-3 sm:text-sm"
           >
-            Next
+            Siguiente
           </button>
         </div>
       )}
@@ -684,7 +685,7 @@ function VehicleInfo({ car }) {
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center text-[9px] uppercase tracking-wider text-black/25">
-            No image
+            Sin imagen
           </div>
         )}
       </div>
@@ -695,7 +696,7 @@ function VehicleInfo({ car }) {
         </p>
 
         <p className="mt-1 text-xs text-black/40">
-          {car.year} · {car.condition}
+          {car.year} · {translateVehicleTerm(car.condition)}
           {car.stockNumber
             ? ` · #${car.stockNumber}`
             : ""}
@@ -723,9 +724,9 @@ function StatusSelect({
       }
       className="rounded-lg border border-black/10 bg-white px-2.5 py-2 text-xs font-semibold outline-none focus:border-black disabled:opacity-40"
     >
-      <option value="Available">Available</option>
-      <option value="Reserved">Reserved</option>
-      <option value="Sold">Sold</option>
+      <option value="Available">Disponible</option>
+      <option value="Reserved">Reservado</option>
+      <option value="Sold">Vendido</option>
     </select>
   );
 }
@@ -750,7 +751,7 @@ function FeaturedButton({
           : "bg-black/[0.05] text-black/50 hover:bg-black/[0.1]"
       }`}
     >
-      {featured ? "Featured" : "Feature"}
+      {featured ? "Destacado" : "Destacar"}
     </button>
   );
 }
@@ -779,7 +780,7 @@ function CarActions({
         onClick={() => onDelete(car._id)}
         className="rounded-lg border border-red-200 px-3 py-2 text-xs font-semibold text-red-600 transition hover:bg-red-600 hover:text-white disabled:cursor-not-allowed disabled:opacity-40"
       >
-        {busy ? "Working..." : "Delete"}
+        {busy ? "Procesando..." : "Eliminar"}
       </button>
     </div>
   );

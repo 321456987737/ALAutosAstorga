@@ -20,12 +20,12 @@ import {
 import { BUSINESS_NAME } from "@/lib/business";
 
 const navLinks = [
-  { href: "/", label: "Home", icon: Home },
-  { href: "/cars", label: "Cars", icon: Car },
+  { href: "/", label: "Inicio", icon: Home },
+  { href: "/cars", label: "Vehículos", icon: Car },
   // { href: "/models", label: "Models", icon: CarFront },
-  { href: "/services", label: "Services", icon: Wrench },
-  { href: "/about", label: "About", icon: Info },
-  { href: "/contact", label: "Contact", icon: Phone },
+  { href: "/services", label: "Servicios", icon: Wrench },
+  { href: "/about", label: "Nosotros", icon: Info },
+  { href: "/contact", label: "Contacto", icon: Phone },
 ];
 
 const navSpring = {
@@ -114,7 +114,7 @@ export default function Header() {
 
           <Link
             href="/"
-            aria-label={`${BUSINESS_NAME} home`}
+            aria-label={`Inicio de ${BUSINESS_NAME}`}
             className="flex shrink-0 items-center  gap-1.5"
           >
             <Image
@@ -132,7 +132,7 @@ export default function Header() {
           {/* Navigation */}
 
           <nav
-            aria-label="Main navigation"
+            aria-label="Navegación principal"
             className="flex items-center lg:gap-8 gap-3.5"
           >
             {navLinks.map((link) => {
@@ -172,7 +172,7 @@ export default function Header() {
               href="/cars"
               className="rounded-full bg-white px-5 py-3 text-sm font-medium text-[#181818] transition hover:bg-white/90"
             >
-              View inventory
+              Ver vehículos
             </Link>
 
             {/* Admin */}
@@ -182,7 +182,7 @@ export default function Header() {
                 href="/admin"
                 className="inline-flex justify-center items-center text-center  gap-2 rounded-full border border-white/20 px-4 py-2.5 text-xs font-medium text-white transition active:scale-95"
               >
-                Admin Panel
+                Panel de administración
               </Link>
             )}
           </div>
@@ -206,7 +206,7 @@ export default function Header() {
 
           <Link
             href="/"
-            aria-label={`${BUSINESS_NAME} home`}
+            aria-label={`Inicio de ${BUSINESS_NAME}`}
             className="flex min-w-0 shrink items-center gap-2.5"
           >
             <Image
@@ -226,7 +226,7 @@ export default function Header() {
               href="/admin"
               className="flex items-center text-center gap-2 rounded-full border border-white/20 px-4 py-2.5 text-xs font-medium text-white transition active:scale-95"
             >
-              Admin Panel
+              Panel de administración
             </Link>
           )}
         </div>
@@ -237,7 +237,7 @@ export default function Header() {
       ====================================================== */}
 
       <nav
-        aria-label="Mobile navigation"
+        aria-label="Navegación móvil"
         className="fixed  bottom-3 left-3 right-3 z-50 h-[82px] rounded-[22px] border border-white/10 bg-[#181818]/95 shadow-[0_8px_30px_rgba(0,0,0,0.35)] backdrop-blur-xl md:hidden"
         style={{
           paddingBottom:

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { translateVehicleTerm } from "@/lib/localization";
 export default function AdminDashboardPage() {
  
 
@@ -26,7 +27,7 @@ export default function AdminDashboardPage() {
 
         if (!response.ok) {
           throw new Error(
-            "Failed to load dashboard"
+            "No se ha podido cargar el panel."
           );
         }
 
@@ -35,7 +36,7 @@ export default function AdminDashboardPage() {
         if (!result.success) {
           throw new Error(
             result.message ||
-              "Failed to load dashboard"
+              "No se ha podido cargar el panel."
           );
         }
 
@@ -46,7 +47,7 @@ export default function AdminDashboardPage() {
         );
 
         setError(
-          "We couldn't load the dashboard."
+          "No se ha podido cargar el panel."
         );
       } finally {
         setLoading(false);
@@ -62,15 +63,15 @@ export default function AdminDashboardPage() {
     <div className="mx-auto max-w-7xl md:pb-0 pb-20">
       <div className="mb-8">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-black/35">
-          Overview
+          Resumen
         </p>
 
         <h1 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">
-          Dashboard
+          Panel
         </h1>
 
         <p className="mt-2 text-sm text-black/45">
-          Manage your dealership website and inventory.
+          Gestiona el sitio web y el inventario de tu concesionario.
         </p>
       </div>
 
@@ -83,7 +84,7 @@ export default function AdminDashboardPage() {
       {/* Main Stats */}
       <div className="grid gap-4 grid-cols-2 xl:grid-cols-4">
         <StatCard
-          title="Total Cars"
+          title="Vehículos totales"
           value={
             loading ? "—" : stats?.totalCars ?? 0
           }
@@ -91,7 +92,7 @@ export default function AdminDashboardPage() {
         />
 
         <StatCard
-          title="Available"
+          title="Disponibles"
           value={
             loading
               ? "—"
@@ -101,7 +102,7 @@ export default function AdminDashboardPage() {
         />
 
         <StatCard
-          title="Sold"
+          title="Vendidos"
           value={
             loading ? "—" : stats?.soldCars ?? 0
           }
@@ -109,7 +110,7 @@ export default function AdminDashboardPage() {
         />
 
         <StatCard
-          title="New Inquiries"
+          title="Nuevas consultas"
           value={
             loading
               ? "—"
@@ -122,7 +123,7 @@ export default function AdminDashboardPage() {
       {/* Secondary Stats */}
       <div className="mt-4 grid gap-4 grid-cols-2 xl:grid-cols-4">
         <MiniStat
-          title="Reserved Cars"
+          title="Vehículos reservados"
           value={
             loading
               ? "—"
@@ -131,7 +132,7 @@ export default function AdminDashboardPage() {
         />
 
         <MiniStat
-          title="Total Inquiries"
+          title="Consultas totales"
           value={
             loading
               ? "—"
@@ -140,7 +141,7 @@ export default function AdminDashboardPage() {
         />
 
         <MiniStat
-          title="Pending Test Drives"
+          title="Pruebas de conducción pendientes"
           value={
             loading
               ? "—"
@@ -149,7 +150,7 @@ export default function AdminDashboardPage() {
         />
 
         <MiniStat
-          title="Confirmed Test Drives"
+          title="Pruebas de conducción confirmadas"
           value={
             loading
               ? "—"
@@ -162,33 +163,33 @@ export default function AdminDashboardPage() {
       <section className="mt-8">
         <div className="mb-4">
           <h2 className="text-lg font-semibold">
-            Quick actions
+            Acciones rápidas
           </h2>
         </div>
 
         <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
           <QuickAction
             href="/admin/cars/new"
-            title="Add Car"
-            description="Add a new vehicle to your inventory."
+            title="Añadir vehículo"
+            description="Añade un vehículo nuevo al inventario."
           />
 
           <QuickAction
             href="/admin/inquiries"
-            title="View Inquiries"
-            description="See customers interested in your vehicles."
+            title="Ver consultas"
+            description="Consulta los mensajes de clientes interesados en tus vehículos."
           />
 
           <QuickAction
             href="/admin/test-drives"
-            title="Test Drives"
-            description="Manage upcoming test-drive requests."
+            title="Pruebas de conducción"
+            description="Gestiona las próximas solicitudes de prueba de conducción."
           />
 
           <QuickAction
             href="/admin/businesses"
-            title="Business Profile"
-            description="Update dealership information."
+            title="Perfil del negocio"
+            description="Actualiza la información del concesionario."
           />
         </div>
       </section>
@@ -239,7 +240,7 @@ function StatCard({
       </p>
 
       <p className="mt-4 text-xs font-medium text-black/35">
-        View details →
+        Ver detalles →
       </p>
     </Link>
   );
@@ -296,11 +297,11 @@ function RecentCars({
       <div className="flex items-center justify-between border-b border-black/10 px-6 py-5">
         <div>
           <h2 className="font-semibold">
-            Recent Cars
+            Vehículos recientes
           </h2>
 
           <p className="mt-1 text-xs text-black/40">
-            Recently added vehicles
+            Vehículos añadidos recientemente
           </p>
         </div>
 
@@ -308,7 +309,7 @@ function RecentCars({
           href="/admin/cars"
           className="text-xs font-semibold underline underline-offset-4"
         >
-          View all
+          Ver todos
         </Link>
       </div>
 
@@ -349,7 +350,7 @@ function RecentCars({
             </div>
           ))
         ) : (
-          <EmptyRow text="No cars added yet." />
+          <EmptyRow text="Todavía no se han añadido vehículos." />
         )}
       </div>
     </section>
@@ -365,11 +366,11 @@ function RecentInquiries({
       <div className="flex items-center justify-between border-b border-black/10 px-6 py-5">
         <div>
           <h2 className="font-semibold">
-            Recent Inquiries
+            Consultas recientes
           </h2>
 
           <p className="mt-1 text-xs text-black/40">
-            Latest customer messages
+            Últimos mensajes de clientes
           </p>
         </div>
 
@@ -377,7 +378,7 @@ function RecentInquiries({
           href="/admin/inquiries"
           className="text-xs font-semibold underline underline-offset-4"
         >
-          View all
+          Ver todas
         </Link>
       </div>
 
@@ -402,7 +403,7 @@ function RecentInquiries({
 
                   {inquiry.carId && (
                     <p className="mt-2 truncate text-xs text-black/55">
-                      Interested in{" "}
+                      Le interesa{" "}
                       <span className="font-medium">
                         {inquiry.carId.make}{" "}
                         {inquiry.carId.model}
@@ -418,7 +419,7 @@ function RecentInquiries({
             </div>
           ))
         ) : (
-          <EmptyRow text="No inquiries yet." />
+          <EmptyRow text="Todavía no hay consultas." />
         )}
       </div>
     </section>
@@ -434,11 +435,11 @@ function RecentTestDrives({
       <div className="flex items-center justify-between border-b border-black/10 px-6 py-5">
         <div>
           <h2 className="font-semibold">
-            Recent Test Drives
+            Pruebas de conducción recientes
           </h2>
 
           <p className="mt-1 text-xs text-black/40">
-            Latest test-drive requests
+            Últimas solicitudes de prueba de conducción
           </p>
         </div>
 
@@ -446,7 +447,7 @@ function RecentTestDrives({
           href="/admin/test-drives"
           className="text-xs font-semibold underline underline-offset-4"
         >
-          View all
+          Ver todas
         </Link>
       </div>
 
@@ -484,7 +485,7 @@ function RecentTestDrives({
             </div>
           ))
         ) : (
-          <EmptyRow text="No test-drive requests yet." />
+          <EmptyRow text="Todavía no hay solicitudes de prueba de conducción." />
         )}
       </div>
     </section>
@@ -496,7 +497,7 @@ function StatusBadge({
 }) {
   return (
     <span className="shrink-0 rounded-full bg-black/[0.05] px-3 py-1.5 text-[11px] font-semibold text-black/60">
-      {status}
+      {translateVehicleTerm(status)}
     </span>
   );
 }

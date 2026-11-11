@@ -50,14 +50,14 @@ async function getCars(searchParams) {
   );
 
   if (!response.ok) {
-    throw new Error("Failed to load cars");
+    throw new Error("No se han podido cargar los vehículos.");
   }
 
   const result = await response.json();
 
   if (!result.success) {
     throw new Error(
-      result.message || "Failed to load cars"
+      result.message || "No se han podido cargar los vehículos."
     );
   }
 

@@ -122,7 +122,7 @@ export async function GET(request) {
       {
         success: false,
         message:
-          "Failed to load test drives",
+          "No se han podido cargar las pruebas de conducción.",
       },
       {
         status: 500,

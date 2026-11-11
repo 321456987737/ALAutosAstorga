@@ -8,39 +8,39 @@ import { useState } from "react";
 const faqs = [
   {
     id: 1,
-    question: "Are all vehicles available for viewing?",
+    question: "¿Se pueden ver todos los vehículos disponibles?",
     answer:
-      "Our available vehicles can be viewed at the showroom. We recommend contacting our team before visiting so we can confirm availability and have your preferred vehicle ready.",
+      "Puedes ver los vehículos disponibles en nuestro concesionario. Te recomendamos contactar con nuestro equipo antes de venir para confirmar la disponibilidad y tener preparado el vehículo que te interesa.",
   },
   {
     id: 2,
-    question: "Can I book a test drive?",
+    question: "¿Puedo reservar una prueba de conducción?",
     answer:
-      "Yes. You can request a test drive for eligible vehicles through our website or by contacting our team directly. We will arrange a suitable date and time.",
+      "Sí. Puedes solicitar una prueba de conducción para los vehículos disponibles desde nuestra web o contactando directamente con nuestro equipo. Buscaremos una fecha y hora adecuadas.",
   },
   {
     id: 3,
-    question: "Do you accept trade-ins?",
+    question: "¿Aceptáis vehículos como parte de pago?",
     answer:
-      "Yes. We can review your current vehicle as part of a trade-in. Share your vehicle details with our team and we will guide you through the valuation process.",
+      "Sí. Podemos valorar tu vehículo actual como parte de pago. Comparte sus datos con nuestro equipo y te guiaremos durante el proceso de tasación.",
   },
   {
     id: 4,
-    question: "Do you offer vehicle financing?",
+    question: "¿Ofrecéis financiación?",
     answer:
-      "Financing options may be available depending on the vehicle and your requirements. Contact our team to discuss the available options for your purchase.",
+      "Puede haber opciones de financiación según el vehículo y tus necesidades. Contacta con nuestro equipo para consultar las opciones disponibles para tu compra.",
   },
   {
     id: 5,
-    question: "Can I reserve a vehicle?",
+    question: "¿Puedo reservar un vehículo?",
     answer:
-      "Selected vehicles may be reserved for a limited period. Reservation availability and terms vary by vehicle, so please contact us for current details.",
+      "Algunos vehículos se pueden reservar durante un periodo limitado. La disponibilidad y las condiciones dependen de cada vehículo; contacta con nosotros para conocer los detalles.",
   },
   {
     id: 6,
-    question: "Do you offer vehicle delivery?",
+    question: "¿Ofrecéis entrega de vehículos?",
     answer:
-      "Delivery arrangements can be discussed with our team based on the vehicle and destination. Contact us and we will provide the available delivery options.",
+      "Puedes consultar con nuestro equipo las opciones de entrega según el vehículo y el destino. Contacta con nosotros y te informaremos de las alternativas disponibles.",
   },
 ];
 
@@ -85,7 +85,7 @@ export default function FAQSection() {
               }}
               className="mb-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.35em] text-black/30 md:text-[10px]"
             >
-              Need to know
+              Información útil
             </motion.p>
 
             {/* TITLE */}
@@ -110,7 +110,7 @@ export default function FAQSection() {
               }}
               className="font-bebas text-[clamp(5rem,10vw,10rem)] leading-[0.78] tracking-[-0.045em] text-black"
             >
-              FAQs
+              Preguntas frecuentes
             </motion.h2>
 
             {/* DESCRIPTION */}
@@ -135,8 +135,9 @@ export default function FAQSection() {
               }}
               className="mt-7 max-w-sm font-montserrat text-[10px] leading-[1.8] tracking-[0.06em] text-black/40 md:text-[11px]"
             >
-              Everything you need to know before finding your next vehicle.
-              For anything else, our team is always here to help.
+              Todo lo que necesitas saber antes de encontrar tu próximo
+              vehículo. Si tienes cualquier otra duda, nuestro equipo está
+              aquí para ayudarte.
             </motion.p>
           </div>
 

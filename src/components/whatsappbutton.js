@@ -5,7 +5,7 @@ import { MessageCircle, Phone } from "lucide-react";
 
 export default function WhatsAppButton({
   phone = "34722819288",
-  message = "Hello! I'm interested in your vehicles.",
+  message = "¡Hola! Me interesan sus vehículos.",
 }) {
   const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 
@@ -14,7 +14,7 @@ export default function WhatsAppButton({
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Contact us on WhatsApp"
+      aria-label="Contáctanos por WhatsApp"
       className="fixed md:bottom-6 bottom-24 right-3 md:right-6 z-[9999] group flex h-16 w-16 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_5px_25px_rgba(37,211,102,0.4)] transition-all duration-300 hover:scale-110 hover:bg-[#20bd5a]"
     >
       {/* Pulse effect */}

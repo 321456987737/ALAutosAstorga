@@ -65,13 +65,13 @@ export default function AdminSignupPage() {
 
       if (!response.ok) {
         setError(
-          data.message || "Failed to create admin account."
+          data.message || "No se ha podido crear la cuenta de administración."
         );
         setLoading(false);
         return;
       }
 
-      setSuccess("Account created. Redirecting to login...");
+      setSuccess("Cuenta creada. Redirigiendo al inicio de sesión...");
 
       setTimeout(() => {
         router.replace("/admin/login");
@@ -79,7 +79,7 @@ export default function AdminSignupPage() {
     } catch (error) {
       console.error("SIGNUP ERROR:", error);
 
-      setError("Something went wrong. Please try again.");
+      setError("Se ha producido un error. Inténtalo de nuevo.");
       setLoading(false);
     }
   }
@@ -107,11 +107,11 @@ export default function AdminSignupPage() {
               </p>
 
               <h1 className="mt-1.5 text-2xl font-semibold tracking-tight text-[#181818] sm:text-3xl">
-                Create admin account
+                Crear cuenta de administrador
               </h1>
 
               <p className="mt-1.5 text-sm text-black/45 text-center">
-                Set up the administrator account for your dealership.
+                Configura la cuenta de administración de tu concesionario.
               </p>
             </div>
           </div>
@@ -126,12 +126,12 @@ export default function AdminSignupPage() {
 
             <div>
               <p className="text-xs font-semibold text-black/70">
-                One-time setup
+                Configuración inicial
               </p>
 
               <p className="mt-1 text-[11px] leading-5 text-black/40">
-                Your private setup key is required to create the initial
-                administrator account.
+                Necesitas tu clave privada de configuración para crear la
+                primera cuenta de administrador.
               </p>
             </div>
           </div>
@@ -146,7 +146,7 @@ export default function AdminSignupPage() {
                   htmlFor="name"
                   className="mb-2 block text-sm font-medium text-black/75"
                 >
-                  Full name
+                  Nombre completo
                 </label>
 
                 <div className="relative">
@@ -162,7 +162,7 @@ export default function AdminSignupPage() {
                     type="text"
                     value={form.name}
                     onChange={handleChange}
-                    placeholder="Admin name"
+                    placeholder="Nombre del administrador"
                     autoComplete="name"
                     required
                     className="h-13 w-full rounded-2xl border border-black/10 bg-[#fafafa] pl-11 pr-4 text-sm text-black outline-none transition placeholder:text-black/25 hover:border-black/20 focus:border-black/30 focus:bg-white focus:ring-4 focus:ring-black/[0.03]"
@@ -176,7 +176,7 @@ export default function AdminSignupPage() {
                   htmlFor="email"
                   className="mb-2 block text-sm font-medium text-black/75"
                 >
-                  Email address
+                  Correo electrónico
                 </label>
 
                 <div className="relative">
@@ -192,7 +192,7 @@ export default function AdminSignupPage() {
                     type="email"
                     value={form.email}
                     onChange={handleChange}
-                    placeholder="admin@example.com"
+                    placeholder="administrador@ejemplo.com"
                     autoComplete="email"
                     required
                     className="h-13 w-full rounded-2xl border border-black/10 bg-[#fafafa] pl-11 pr-4 text-sm text-black outline-none transition placeholder:text-black/25 hover:border-black/20 focus:border-black/30 focus:bg-white focus:ring-4 focus:ring-black/[0.03]"
@@ -209,7 +209,7 @@ export default function AdminSignupPage() {
                   htmlFor="password"
                   className="mb-2 block text-sm font-medium text-black/75"
                 >
-                  Password
+                  Contraseña
                 </label>
 
                 <div className="relative">
@@ -225,7 +225,7 @@ export default function AdminSignupPage() {
                     type={showPassword ? "text" : "password"}
                     value={form.password}
                     onChange={handleChange}
-                    placeholder="Minimum 8 characters"
+                    placeholder="Mínimo 8 caracteres"
                     autoComplete="new-password"
                     minLength={8}
                     required
@@ -239,7 +239,7 @@ export default function AdminSignupPage() {
                     }
                     className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-xl text-black/35 transition hover:bg-black/[0.05] hover:text-black"
                     aria-label={
-                      showPassword ? "Hide password" : "Show password"
+                      showPassword ? "Ocultar contraseña" : "Mostrar contraseña"
                     }
                   >
                     {showPassword ? (
@@ -257,7 +257,7 @@ export default function AdminSignupPage() {
                   htmlFor="setupKey"
                   className="mb-2 block text-sm font-medium text-black/75"
                 >
-                  Setup key
+                  Clave de configuración
                 </label>
 
                 <div className="relative">
@@ -273,7 +273,7 @@ export default function AdminSignupPage() {
                     type={showSetupKey ? "text" : "password"}
                     value={form.setupKey}
                     onChange={handleChange}
-                    placeholder="Enter setup key"
+                    placeholder="Introduce la clave de configuración"
                     required
                     className="h-13 w-full rounded-2xl border border-black/10 bg-[#fafafa] pl-11 pr-14 text-sm text-black outline-none transition placeholder:text-black/25 hover:border-black/20 focus:border-black/30 focus:bg-white focus:ring-4 focus:ring-black/[0.03]"
                   />
@@ -286,8 +286,8 @@ export default function AdminSignupPage() {
                     className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-xl text-black/35 transition hover:bg-black/[0.05] hover:text-black"
                     aria-label={
                       showSetupKey
-                        ? "Hide setup key"
-                        : "Show setup key"
+                        ? "Ocultar clave de configuración"
+                        : "Mostrar clave de configuración"
                     }
                   >
                     {showSetupKey ? (
@@ -322,8 +322,8 @@ export default function AdminSignupPage() {
             >
               <span>
                 {loading
-                  ? "Creating account..."
-                  : "Create Admin Account"}
+                  ? "Creando cuenta..."
+                  : "Crear cuenta de administrador"}
               </span>
 
               {!loading && (
@@ -339,19 +339,19 @@ export default function AdminSignupPage() {
           {/* LOGIN */}
           <div className="mt-6 border-t border-black/10 pt-5 text-center">
             <p className="text-sm text-black/45">
-              Already have an admin account?{" "}
+              ¿Ya tienes una cuenta de administrador?{" "}
               <Link
                 href="/admin/login"
                 className="font-semibold text-[#181818] underline decoration-black/20 underline-offset-4 hover:decoration-black/60"
               >
-                Sign in
+                Iniciar sesión
               </Link>
             </p>
           </div>
         </div>
 
         <p className="mt-4 text-center text-[11px] text-black/25">
-          Private dealership administration
+          Administración privada del concesionario
         </p>
       </div>
     </main>

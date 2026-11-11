@@ -17,56 +17,56 @@ const SERVICES = [
   {
     number: "01",
     image: "/images/cars/car1.jpg",
-    title: "Vehicle Sales",
+    title: "Venta de vehículos",
     description:
-      "Explore our carefully selected inventory and let our team help you find a vehicle that fits your lifestyle, preferences and budget.",
+      "Descubre nuestro inventario seleccionado con cuidado y deja que nuestro equipo te ayude a encontrar un vehículo que encaje con tu estilo de vida, tus preferencias y tu presupuesto.",
     icon: CarFront,
-    label: "Find your vehicle",
+    label: "Encuentra tu vehículo",
   },
   {
     number: "02",
     image: "/images/cars/car2.jpg",
-    title: "Test Drives",
+    title: "Pruebas de conducción",
     description:
-      "A vehicle should feel right before you buy it. Schedule a test drive and experience your preferred vehicle for yourself.",
+      "Un vehículo debe convencerte antes de comprarlo. Programa una prueba de conducción y descubre por ti mismo cómo se siente.",
     icon: ClipboardCheck,
-    label: "Experience the drive",
+    label: "Vive la experiencia",
   },
   {
     number: "03",
     image: "/images/cars/car3.jpg",
-    title: "Trade-In",
+    title: "Entrega como parte de pago",
     description:
-      "Thinking about upgrading? We can help you understand your current vehicle's trade-in options while you move toward your next car.",
+      "¿Piensas en cambiar de coche? Te ayudamos a conocer las opciones para entregar tu vehículo actual como parte de pago y dar el siguiente paso.",
     icon: Handshake,
-    label: "Upgrade your vehicle",
+    label: "Renueva tu vehículo",
   },
   {
     number: "04",
     image: "/images/cars/car4.jpg",
-    title: "Financing",
+    title: "Financiación",
     description:
-      "Discuss available financing options with our team and understand the requirements and purchasing process before moving forward.",
+      "Consulta con nuestro equipo las opciones de financiación disponibles y conoce los requisitos y el proceso de compra antes de decidir.",
     icon: CircleDollarSign,
-    label: "Explore your options",
+    label: "Explora tus opciones",
   },
   {
     number: "05",
     image: "/images/cars/car5.jpg",
-    title: "Vehicle Inspection",
+    title: "Inspección del vehículo",
     description:
-      "Get more information about a vehicle's condition, specifications and inspection details so you can make an informed decision.",
+      "Solicita más información sobre el estado, las especificaciones y la inspección del vehículo para tomar una decisión informada.",
     icon: Wrench,
-    label: "Know your vehicle",
+    label: "Conoce tu vehículo",
   },
   {
     number: "06",
     image: "/images/cars/car1.jpg",
-    title: "Customer Support",
+    title: "Atención al cliente",
     description:
-      "From your first question to your final decision, our team is available to help by phone or email.",
+      "Desde tu primera pregunta hasta la decisión final, nuestro equipo está disponible para ayudarte por teléfono o correo electrónico.",
     icon: MessageCircle,
-    label: "Talk to our team",
+    label: "Habla con nuestro equipo",
   },
 ];
 
@@ -89,7 +89,7 @@ export default function ServicesPage() {
         <div className="absolute inset-0">
           <Image
             src={HERO_IMAGE}
-            alt="Luxury vehicle"
+            alt="Vehículo de lujo"
             fill
             priority
             sizes="100vw"
@@ -111,17 +111,16 @@ export default function ServicesPage() {
           <div className="mx-auto flex h-full max-w-[1800px] items-end px-6 pb-10 md:px-10 md:pb-14 lg:px-14 lg:pb-16">
             <div className="max-w-4xl">
               <p className="mb-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.35em] text-white/55 md:text-[10px]">
-                The dealership experience
+                La experiencia del concesionario
               </p>
 
               <h1 className="font-bebas text-[clamp(4.5rem,9vw,9rem)] leading-[0.78] tracking-[-0.05em] text-white">
-                Services
+                Servicios
               </h1>
 
               <p className="mt-6 max-w-lg font-montserrat text-[10px] leading-[1.8] tracking-[0.04em] text-white/55 md:text-[11px]">
-                More than finding a car. From your first enquiry to
-                getting behind the wheel, we are here to make the
-                experience simple.
+                Mucho más que encontrar un coche. Desde tu primera consulta
+                hasta ponerte al volante, estamos aquí para que todo sea fácil.
               </p>
             </div>
           </div>
@@ -137,22 +136,22 @@ export default function ServicesPage() {
           <div className="grid gap-10 lg:grid-cols-[0.4fr_1.6fr] lg:gap-20">
             <div>
               <p className="font-montserrat text-[10px] uppercase tracking-[0.3em] text-black/30">
-                Our approach
+                Nuestra forma de trabajar
               </p>
             </div>
 
             <div>
               <h2 className="max-w-6xl font-bebas text-[clamp(3.8rem,7vw,8rem)] leading-[0.78] tracking-[-0.045em]">
-                The right car is only
+                El coche adecuado es solo
                 <br />
-                part of the experience.
+                parte de la experiencia.
               </h2>
 
               <p className="mt-8 max-w-2xl font-montserrat text-[11px] leading-[1.9] tracking-[0.03em] text-black/45 md:text-[13px]">
-                At A.L. Autos Astorga, we help you explore vehicles, arrange a
-                test drive and get the information you need. Whether you are
-                looking for your next car or considering a trade-in, our team
-                is here to help.
+                En A.L. Autos Astorga te ayudamos a descubrir vehículos,
+                programar una prueba de conducción y obtener la información
+                que necesitas. Tanto si buscas tu próximo coche como si
+                quieres entregar el actual, nuestro equipo está aquí para ayudarte.
               </p>
             </div>
           </div>
@@ -171,16 +170,16 @@ export default function ServicesPage() {
             <div className="flex items-end justify-between">
               <div>
                 <p className="font-montserrat text-[10px] uppercase tracking-[0.3em] text-black/30">
-                  What we offer
+                  Lo que ofrecemos
                 </p>
 
                 <h2 className="mt-3 font-bebas text-5xl leading-none tracking-[-0.035em] md:text-7xl">
-                  Our Services
+                  Nuestros servicios
                 </h2>
               </div>
 
               <span className="hidden font-montserrat text-[9px] uppercase tracking-[0.2em] text-black/25 sm:block">
-                06 Services
+                6 servicios
               </span>
             </div>
           </div>
@@ -210,15 +209,15 @@ export default function ServicesPage() {
 
             <div>
               <p className="font-montserrat text-[10px] uppercase tracking-[0.3em] text-white/30">
-                Why choose us
+                Por qué elegirnos
               </p>
 
               <h2 className="mt-5 font-bebas text-[clamp(4rem,7vw,7rem)] leading-[0.78] tracking-[-0.045em]">
-                Simple.
+                Sencillo.
                 <br />
-                Personal.
+                Cercano.
                 <br />
-                Straightforward.
+                Sin complicaciones.
               </h2>
             </div>
 
@@ -227,26 +226,26 @@ export default function ServicesPage() {
             <div className="grid border-t border-white/10 sm:grid-cols-2">
               <Feature
                 number="01"
-                title="Selected vehicles"
-                text="A collection focused on quality, condition and value."
+                title="Vehículos seleccionados"
+                text="Una selección centrada en la calidad, el estado y el valor."
               />
 
               <Feature
                 number="02"
-                title="Personal service"
-                text="Speak directly with our team whenever you need help."
+                title="Atención personal"
+                text="Habla directamente con nuestro equipo siempre que necesites ayuda."
               />
 
               <Feature
                 number="03"
-                title="Clear process"
-                text="No unnecessary complications. Just straightforward communication."
+                title="Proceso claro"
+                text="Sin complicaciones innecesarias. Comunicación directa y sencilla."
               />
 
               <Feature
                 number="04"
-                title="After-sales support"
-                text="Our relationship doesn't have to end when you drive away."
+                title="Servicio posventa"
+                text="Nuestra relación no tiene por qué terminar cuando te marches al volante."
               />
             </div>
           </div>
@@ -262,18 +261,18 @@ export default function ServicesPage() {
           <div className="grid gap-12 lg:grid-cols-[1fr_0.65fr] lg:items-end">
             <div>
               <p className="font-montserrat text-[10px] uppercase tracking-[0.3em] text-black/30">
-                Start your search
+                Empieza tu búsqueda
               </p>
 
               <h2 className="mt-5 max-w-5xl font-bebas text-[clamp(4rem,8vw,8rem)] leading-[0.78] tracking-[-0.05em]">
-                Your next car
+                Tu próximo coche
                 <br />
-                is waiting.
+                te está esperando.
               </h2>
 
               <p className="mt-7 max-w-xl font-montserrat text-[11px] leading-[1.9] tracking-[0.03em] text-black/45 md:text-[13px]">
-                Explore our current inventory or contact our team to
-                discuss what you are looking for.
+                Descubre nuestro inventario o contacta con el equipo para
+                contarnos qué estás buscando.
               </p>
             </div>
 
@@ -283,7 +282,7 @@ export default function ServicesPage() {
                   href="/cars"
                   className="group inline-flex items-center gap-3 bg-black px-6 py-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.18em] text-white transition-all duration-300 hover:bg-black/80 md:text-[10px]"
                 >
-                  Browse inventory
+                  Ver vehículos
 
                   <ArrowUpRight
                     size={14}
@@ -296,7 +295,7 @@ export default function ServicesPage() {
                   href="/contact"
                   className="group inline-flex items-center gap-3 border border-black/15 px-6 py-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.18em] text-black transition-all duration-300 hover:border-black md:text-[10px]"
                 >
-                  Contact us
+                  Contactar
 
                   <ArrowUpRight
                     size={14}
@@ -399,7 +398,7 @@ function ServiceRow({ service, index }) {
             href="/contact"
             className="group/link mt-8 inline-flex w-fit items-center gap-3 border-b border-black/15 pb-2 font-montserrat text-[9px] font-medium uppercase tracking-[0.2em] text-black/55 transition-all duration-300 hover:border-black hover:text-black md:text-[10px]"
           >
-            Get in touch
+            Contactar
 
             <ArrowUpRight
               size={14}

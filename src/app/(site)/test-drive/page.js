@@ -6,7 +6,7 @@ import {Suspense} from "react";
 const Page = () => {
   return (
     <div>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>Cargando...</div>}>
         <TestDrivePage/>
       </Suspense>
     </div>

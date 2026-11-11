@@ -35,7 +35,7 @@ export async function GET() {
     return NextResponse.json(
       {
         success: false,
-        message: "Failed to load latest arrivals",
+        message: "No se han podido cargar las últimas incorporaciones.",
       },
       {
         status: 500,

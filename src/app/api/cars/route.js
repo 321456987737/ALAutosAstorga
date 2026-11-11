@@ -320,7 +320,7 @@ export async function GET(request) {
     return NextResponse.json(
       {
         success: false,
-        message: "Failed to load cars",
+        message: "No se han podido cargar los vehículos.",
       },
       {
         status: 500,

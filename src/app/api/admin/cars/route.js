@@ -81,7 +81,7 @@ export async function GET(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Invalid minimum price",
+          message: "El precio mínimo no es válido.",
         },
         { status: 400 },
       );
@@ -91,7 +91,7 @@ export async function GET(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Invalid maximum price",
+          message: "El precio máximo no es válido.",
         },
         { status: 400 },
       );
@@ -101,7 +101,7 @@ export async function GET(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Invalid minimum year",
+          message: "El año mínimo no es válido.",
         },
         { status: 400 },
       );
@@ -111,7 +111,7 @@ export async function GET(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Invalid maximum year",
+          message: "El año máximo no es válido.",
         },
         { status: 400 },
       );
@@ -121,7 +121,7 @@ export async function GET(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Minimum price cannot be greater than maximum price",
+          message: "El precio mínimo no puede ser superior al precio máximo.",
         },
         { status: 400 },
       );
@@ -131,7 +131,7 @@ export async function GET(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Minimum year cannot be greater than maximum year",
+          message: "El año mínimo no puede ser posterior al año máximo.",
         },
         { status: 400 },
       );
@@ -411,7 +411,7 @@ export async function GET(request) {
     return NextResponse.json(
       {
         success: false,
-        message: "Failed to load cars",
+        message: "No se han podido cargar los vehículos.",
       },
       {
         status: 500,
@@ -445,7 +445,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Make is required",
+          message: "La marca es obligatoria.",
         },
         {
           status: 400,
@@ -457,7 +457,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Model is required",
+          message: "El modelo es obligatorio.",
         },
         {
           status: 400,
@@ -479,7 +479,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Valid year is required",
+          message: "Introduce un año válido.",
         },
         {
           status: 400,
@@ -491,7 +491,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Valid price is required",
+          message: "Introduce un precio válido.",
         },
         {
           status: 400,
@@ -503,7 +503,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Invalid mileage",
+          message: "El kilometraje no es válido.",
         },
         {
           status: 400,
@@ -566,7 +566,7 @@ export async function POST(request) {
       {
         success: true,
 
-        message: "Car created successfully",
+        message: "El vehículo se ha creado correctamente.",
 
         data: {
           car,
@@ -583,7 +583,7 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "That stock number already exists",
+          message: "Ese número de inventario ya existe.",
         },
         {
           status: 409,
@@ -594,7 +594,7 @@ export async function POST(request) {
     return NextResponse.json(
       {
         success: false,
-        message: "Failed to create car",
+        message: "No se ha podido crear el vehículo.",
       },
       {
         status: 500,

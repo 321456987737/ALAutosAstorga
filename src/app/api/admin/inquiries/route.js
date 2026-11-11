@@ -107,7 +107,7 @@ export async function GET(request) {
       {
         success: false,
         message:
-          "Failed to load inquiries",
+          "No se han podido cargar las consultas.",
       },
       {
         status: 500,

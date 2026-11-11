@@ -18,41 +18,41 @@ const slides = [
   {
     id: 1,
     image: "/images/cars/car1.jpg",
-    eyebrow: "YOUR NEXT CAR STARTS HERE",
-    title: "FIND YOUR NEXT DRIVE 01.",
+    eyebrow: "TU PRÓXIMO COCHE EMPIEZA AQUÍ",
+    title: "ENCUENTRA TU PRÓXIMO VIAJE 01.",
     description:
-      "Explore a carefully selected collection of premium cars, exceptional SUVs, and everyday favorites.",
-    cta: "Explore Inventory",
+      "Descubre una selección cuidada de coches prémium, SUV excepcionales y opciones para el día a día.",
+    cta: "Ver vehículos",
     href: "/cars",
-    secondaryCta: "Book a Test Drive",
+    secondaryCta: "Reservar prueba de conducción",
     secondaryHref: "/test-drive",
-    category: "DISCOVER OUR COLLECTION",
+    category: "DESCUBRE NUESTRA SELECCIÓN",
   },
   {
     id: 2,
     image: "/images/cars/car2.jpg",
-    eyebrow: "DRIVE SOMETHING EXCEPTIONAL",
-    title: "QUALITY YOU CAN FEEL.",
+    eyebrow: "CONDUCE ALGO EXCEPCIONAL",
+    title: "CALIDAD QUE SE SIENTE.",
     description:
-      "Discover vehicles selected for their performance, comfort, and character. Your next journey begins here.",
-    cta: "View All Vehicles",
+      "Descubre vehículos seleccionados por su rendimiento, comodidad y carácter. Tu próximo viaje empieza aquí.",
+    cta: "Ver todos los vehículos",
     href: "/cars",
-    secondaryCta: "Contact Showroom",
+    secondaryCta: "Contactar con el concesionario",
     secondaryHref: "/contact",
-    category: "QUALITY MEETS CONFIDENCE",
+    category: "CALIDAD Y CONFIANZA",
   },
   {
     id: 3,
     image: "/images/cars/car3.jpg",
-    eyebrow: "YOUR JOURNEY. YOUR CHOICE.",
-    title: "THE RIGHT CAR. RIGHT HERE.",
+    eyebrow: "TU VIAJE. TU ELECCIÓN.",
+    title: "EL COCHE IDEAL. AQUÍ.",
     description:
-      "From refined sedans to versatile SUVs, find a vehicle that fits your lifestyle and your next adventure.",
-    cta: "Find Your Car",
+      "Desde elegantes berlinas hasta versátiles SUV, encuentra el vehículo que encaja con tu estilo de vida y tu próxima aventura.",
+    cta: "Encuentra tu coche",
     href: "/cars",
-    secondaryCta: "Book a Test Drive",
+    secondaryCta: "Reservar prueba de conducción",
     secondaryHref: "/test-drive",
-    category: "EXPLORE THE POSSIBILITIES",
+    category: "EXPLORA LAS POSIBILIDADES",
   },
 ];
 
@@ -91,7 +91,7 @@ export default function HeroSection() {
 
   return (
     <section
-      aria-label="Discover our vehicle inventory"
+      aria-label="Descubre nuestros vehículos"
       className="relative h-[720px] min-h-[650px] w-full overflow-hidden bg-[#171717] text-white md:h-[88svh] md:min-h-[680px] md:max-h-[1000px]"
     >
       {/* BACKGROUND CAROUSEL */}
@@ -244,14 +244,14 @@ export default function HeroSection() {
                 >
                   <div className="flex items-center gap-2 text-xs text-white/80">
                     <ShieldCheck size={16} strokeWidth={1.5} />
-                    A Showroom You Can Trust
+                    Un concesionario de confianza
                   </div>
 
                   <span className="hidden h-1 w-1 rounded-full bg-white/50 sm:block" />
 
                   <div className="flex items-center gap-2 text-xs text-white/80">
                     <CarFront size={16} strokeWidth={1.5} />
-                    Explore Available Vehicles
+                    Explora los vehículos disponibles
                   </div>
                 </motion.div>
               </motion.div>
@@ -295,7 +295,7 @@ export default function HeroSection() {
               <button
                 type="button"
                 onClick={scrollPrev}
-                aria-label="Previous vehicle slide"
+                aria-label="Vehículo anterior"
                 className="flex h-11 w-11 items-center justify-center border border-white/25 text-white transition-colors hover:bg-white hover:text-[#171717] active:scale-95"
               >
                 <ArrowLeft size={18} strokeWidth={1.6} />
@@ -304,7 +304,7 @@ export default function HeroSection() {
               <button
                 type="button"
                 onClick={scrollNext}
-                aria-label="Next vehicle slide"
+                aria-label="Vehículo siguiente"
                 className="flex h-11 w-11 items-center justify-center border border-white/25 text-white transition-colors hover:bg-white hover:text-[#171717] active:scale-95"
               >
                 <ArrowRight size={18} strokeWidth={1.6} />

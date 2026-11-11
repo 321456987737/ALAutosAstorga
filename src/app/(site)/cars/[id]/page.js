@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight } from "lucide-react";
+import { translateVehicleTerm } from "@/lib/localization";
 import {
   BUSINESS_LOCATION,
   BUSINESS_MAPS_URL,
@@ -21,13 +22,13 @@ async function getCar(id) {
     }
 
     if (!response.ok) {
-      throw new Error("Failed to load car");
+      throw new Error("No se ha podido cargar el vehículo.");
     }
 
     const result = await response.json();
 
     if (!result.success) {
-      throw new Error(result.message || "Failed to load car");
+      throw new Error(result.message || "No se ha podido cargar el vehículo.");
     }
 
     return result.data;
@@ -51,13 +52,13 @@ async function getLatestCars(currentCarId) {
     });
 
     if (!response.ok) {
-      throw new Error("Failed to load latest cars");
+      throw new Error("No se han podido cargar los últimos vehículos.");
     }
 
     const result = await response.json();
 
     if (!result.success) {
-      throw new Error(result.message || "Failed to load latest cars");
+      throw new Error(result.message || "No se han podido cargar los últimos vehículos.");
     }
 
     const latestCars = Array.isArray(result.data) ? result.data : [];
@@ -93,7 +94,7 @@ export default async function Page({ params }) {
 
   const formattedPrice = formatPrice(car.price, car.currency);
 
-  const formattedMileage = new Intl.NumberFormat("en-US").format(
+  const formattedMileage = new Intl.NumberFormat("es-ES").format(
     car.mileage || 0,
   );
 
@@ -110,7 +111,7 @@ export default async function Page({ params }) {
               href="/"
               className="transition-colors duration-300 hover:text-black"
             >
-              Home
+              Inicio
             </Link>
 
             <span>/</span>
@@ -119,7 +120,7 @@ export default async function Page({ params }) {
               href="/cars"
               className="transition-colors duration-300 hover:text-black"
             >
-              Cars
+              Vehículos
             </Link>
 
             <span>/</span>
@@ -133,7 +134,7 @@ export default async function Page({ params }) {
             href="/cars"
             className="group hidden items-center gap-2 font-montserrat text-[9px] font-medium uppercase tracking-[0.18em] text-black/45 transition-colors duration-300 hover:text-black sm:flex md:text-[10px]"
           >
-            Back to inventory
+            Volver al inventario
             <ArrowUpRight
               size={14}
               strokeWidth={1.2}
@@ -174,7 +175,7 @@ export default async function Page({ params }) {
         {/* CONDITION */}
         <div className="absolute left-4 top-4">
           <span className="bg-white px-3 py-2 font-montserrat text-[9px] font-medium uppercase tracking-[0.16em] text-black md:text-[10px]">
-            {car.condition}
+            {translateVehicleTerm(car.condition)}
           </span>
         </div>
 
@@ -219,7 +220,7 @@ export default async function Page({ params }) {
   ) : (
     <div className="flex aspect-[16/9] items-center justify-center bg-[#f1f1ef]">
       <span className="font-montserrat text-[10px] uppercase tracking-[0.22em] text-black/25 md:text-[11px]">
-        No images available
+        No hay imágenes disponibles
       </span>
     </div>
   )}
@@ -269,7 +270,7 @@ export default async function Page({ params }) {
 
                 <div className="mt-8 border-y border-black/10 py-6">
                   <p className="font-montserrat text-[9px] uppercase tracking-[0.22em] text-black/30 md:text-[10px]">
-                    Asking price
+                    Precio
                   </p>
 
                   <p className="mt-2 font-montserrat text-2xl font-medium tracking-[-0.02em] md:text-3xl lg:text-4xl">
@@ -288,7 +289,7 @@ export default async function Page({ params }) {
     href={`/contact?car=${car._id}`}
     className="group flex items-center justify-center gap-3 bg-black px-6 py-4 font-montserrat text-[10px] font-medium uppercase tracking-[0.18em] text-white transition-all duration-300 hover:bg-black/80 md:text-[11px]"
   >
-    Enquire about this vehicle
+    Consultar sobre este vehículo
 
     <ArrowUpRight
       size={15}
@@ -303,7 +304,7 @@ export default async function Page({ params }) {
     href={`/test-drive?car=${car._id}`}
     className="group flex items-center justify-center gap-3 border border-black/15 px-6 py-4 font-montserrat text-[10px] font-medium uppercase tracking-[0.18em] transition-all duration-300 hover:border-black hover:bg-black hover:text-white md:text-[11px]"
   >
-    Book a test drive
+    Reservar prueba de conducción
 
     <ArrowUpRight
       size={15}
@@ -317,9 +318,9 @@ export default async function Page({ params }) {
                 {/* STOCK */}
 
                 <div className="mt-6 flex items-center justify-between font-montserrat text-[9px] uppercase tracking-[0.18em] text-black/30 md:text-[10px]">
-                  <span>Stock {car.stockNumber || "Available"}</span>
+                  <span>Inventario {car.stockNumber || "Disponible"}</span>
 
-                  <span>{car.status}</span>
+                  <span>{translateVehicleTerm(car.status)}</span>
                 </div>
               </div>
             </div>
@@ -338,46 +339,46 @@ export default async function Page({ params }) {
 
             <div>
               <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-black/30 md:text-[11px]">
-                The vehicle
+                El vehículo
               </p>
 
               <h2 className="mt-3 font-bebas text-5xl leading-[0.85] tracking-[-0.035em] md:text-6xl">
-                About this
+                Sobre este
                 <br />
-                vehicle
+                vehículo
               </h2>
 
               <p className="mt-7 max-w-xl whitespace-pre-line font-montserrat text-[11px] leading-[1.9] tracking-[0.035em] text-black/45 md:text-[13px] md:leading-[1.85]">
                 {car.description ||
-                  "Contact our dealership for more information about this vehicle."}
+                  "Contacta con nuestro concesionario para obtener más información sobre este vehículo."}
               </p>
             </div>
 
             {/* SPECIFICATIONS */}
 
             <div className="border-t border-black/10">
-              <SpecRow label="Make" value={car.make} />
+              <SpecRow label="Marca" value={car.make} />
 
-              <SpecRow label="Model" value={car.model} />
+              <SpecRow label="Modelo" value={car.model} />
 
-              <SpecRow label="Year" value={car.year} />
+              <SpecRow label="Año" value={car.year} />
 
               <SpecRow
-                label="Mileage"
+                label="Kilometraje"
                 value={`${formattedMileage} ${car.mileageUnit}`}
               />
 
-              <SpecRow label="Transmission" value={car.transmission} />
+              <SpecRow label="Transmisión" value={translateVehicleTerm(car.transmission)} />
 
-              <SpecRow label="Fuel type" value={car.fuelType} />
+              <SpecRow label="Combustible" value={translateVehicleTerm(car.fuelType)} />
 
-              <SpecRow label="Body type" value={car.bodyType} />
+              <SpecRow label="Carrocería" value={translateVehicleTerm(car.bodyType)} />
 
-              <SpecRow label="Exterior" value={car.exteriorColor || "—"} />
+              <SpecRow label="Color exterior" value={car.exteriorColor || "—"} />
 
-              <SpecRow label="Interior" value={car.interiorColor || "—"} />
+              <SpecRow label="Color interior" value={car.interiorColor || "—"} />
 
-              <SpecRow label="Engine" value={car.engine || "—"} />
+              <SpecRow label="Motor" value={car.engine || "—"} />
             </div>
           </div>
         </div>
@@ -393,16 +394,16 @@ export default async function Page({ params }) {
             <div className="mb-10 flex items-end justify-between">
               <div>
                 <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-black/30 md:text-[11px]">
-                  Equipment
+                  Equipamiento
                 </p>
 
                 <h2 className="mt-3 font-bebas text-5xl leading-none tracking-[-0.03em] md:text-6xl">
-                  Features
+                  Características
                 </h2>
               </div>
 
               <span className="hidden font-montserrat text-[9px] uppercase tracking-[0.2em] text-black/25 sm:block md:text-[10px]">
-                {car.features.length} items
+                {car.features.length} elementos
               </span>
             </div>
 
@@ -511,11 +512,11 @@ export default async function Page({ params }) {
             <div className="mb-10 flex items-end justify-between gap-6">
               <div>
                 <p className="font-montserrat text-[10px] font-medium uppercase tracking-[0.3em] text-black/30 md:text-[11px]">
-                  Fresh to the collection
+                  Recién llegado a la selección
                 </p>
 
                 <h2 className="mt-3 font-bebas text-5xl leading-[0.85] tracking-[-0.035em] sm:text-6xl md:text-7xl">
-                  Latest Arrivals
+                  Últimas novedades
                 </h2>
               </div>
 
@@ -523,7 +524,7 @@ export default async function Page({ params }) {
                 href="/cars"
                 className="group hidden items-center gap-2 border-b border-black/20 pb-2 font-montserrat text-[9px] font-medium uppercase tracking-[0.18em] text-black/50 transition-colors duration-300 hover:border-black hover:text-black sm:flex md:text-[10px]"
               >
-                View all vehicles
+                Ver todos los vehículos
                 <ArrowUpRight
                   size={14}
                   strokeWidth={1.2}
@@ -551,7 +552,7 @@ export default async function Page({ params }) {
                 href="/cars"
                 className="group inline-flex items-center gap-3 bg-black px-6 py-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.2em] text-white"
               >
-                View all vehicles
+                Ver todos los vehículos
                 <ArrowUpRight
                   size={14}
                   strokeWidth={1.2}
@@ -593,7 +594,7 @@ function LatestCarCard({ car, index }) {
 
   const price = formatPrice(car.price, car.currency);
 
-  const mileage = new Intl.NumberFormat("en-US").format(car.mileage || 0);
+  const mileage = new Intl.NumberFormat("es-ES").format(car.mileage || 0);
 
   return (
     <Link href={`/cars/${car._id}`} className="group block">
@@ -608,7 +609,7 @@ function LatestCarCard({ car, index }) {
           />
         ) : (
           <div className="flex h-full items-center justify-center font-montserrat text-[10px] uppercase tracking-[0.2em] text-black/25">
-            No image
+            Sin imagen
           </div>
         )}
 
@@ -690,6 +691,6 @@ function formatPrice(price, currency) {
       maximumFractionDigits: 0,
     }).format(price);
   } catch {
-    return `${currency || "USD"} ${price.toLocaleString()}`;
+    return `${currency || "USD"} ${price.toLocaleString("es-ES")}`;
   }
 }

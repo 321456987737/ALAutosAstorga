@@ -26,7 +26,7 @@ export async function GET(
       return NextResponse.json(
         {
           success: false,
-          message: "Invalid inquiry ID",
+          message: "El identificador de la consulta no es válido.",
         },
         {
           status: 400,
@@ -47,7 +47,7 @@ export async function GET(
       return NextResponse.json(
         {
           success: false,
-          message: "Inquiry not found",
+          message: "No se ha encontrado la consulta.",
         },
         {
           status: 404,
@@ -71,7 +71,7 @@ export async function GET(
       {
         success: false,
         message:
-          "Failed to load inquiry",
+          "No se ha podido cargar la consulta.",
       },
       {
         status: 500,
@@ -95,7 +95,7 @@ export async function PATCH(
       return NextResponse.json(
         {
           success: false,
-          message: "Invalid inquiry ID",
+          message: "El identificador de la consulta no es válido.",
         },
         {
           status: 400,
@@ -115,7 +115,7 @@ export async function PATCH(
         {
           success: false,
           message:
-            "Invalid inquiry status",
+            "El estado de la consulta no es válido.",
         },
         {
           status: 400,
@@ -147,7 +147,7 @@ export async function PATCH(
       return NextResponse.json(
         {
           success: false,
-          message: "Inquiry not found",
+          message: "No se ha encontrado la consulta.",
         },
         {
           status: 404,
@@ -158,7 +158,7 @@ export async function PATCH(
     return NextResponse.json({
       success: true,
       message:
-        "Inquiry status updated successfully",
+        "El estado de la consulta se ha actualizado correctamente.",
       data: {
         inquiry,
       },
@@ -173,7 +173,7 @@ export async function PATCH(
       {
         success: false,
         message:
-          "Failed to update inquiry",
+          "No se ha podido actualizar la consulta.",
       },
       {
         status: 500,

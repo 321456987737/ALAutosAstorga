@@ -14,7 +14,7 @@ export async function GET(request, { params }) {
       return NextResponse.json(
         {
           success: false,
-          message: "Invalid car ID",
+          message: "El identificador del vehículo no es válido.",
         },
         {
           status: 400,
@@ -32,7 +32,7 @@ export async function GET(request, { params }) {
       return NextResponse.json(
         {
           success: false,
-          message: "Car not found",
+          message: "No se ha encontrado el vehículo.",
         },
         {
           status: 404,
@@ -93,7 +93,7 @@ export async function GET(request, { params }) {
     return NextResponse.json(
       {
         success: false,
-        message: "Failed to load car",
+        message: "No se ha podido cargar el vehículo.",
       },
       {
         status: 500,

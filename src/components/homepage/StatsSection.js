@@ -12,21 +12,21 @@ import {
 const stats = [
   {
     id: 1,
-    value: "Local",
-    label: "Based in Astorga",
-    description: `Visit ${BUSINESS_NAME} in ${BUSINESS_LOCATION}.`,
+    value: "De aquí",
+    label: "En Astorga",
+    description: `Visita ${BUSINESS_NAME} en ${BUSINESS_LOCATION}.`,
   },
   {
     id: 2,
     value: "+34",
-    label: "Call or WhatsApp",
+    label: "Llámanos o escríbenos",
     description: BUSINESS_PHONE,
   },
   {
     id: 3,
-    value: "Visit",
-    label: "Find our location",
-    description: "Get directions to our dealership in Astorga.",
+    value: "Visítanos",
+    label: "Cómo llegar",
+    description: "Consulta cómo llegar a nuestro concesionario en Astorga.",
   },
 ];
 const reveal = {
@@ -65,9 +65,9 @@ export default function StatsSection() {
               viewport={{ once: true, amount: 0.4 }}
               className="font-bebas text-[clamp(4.5rem,9vw,9rem)] leading-[0.8] tracking-[-0.04em] text-black"
             >
-              TRUST BUILT.
+              CONFIANZA.
               <br />
-              MILES AHEAD.
+              KILÓMETROS POR DELANTE.
             </motion.h2>
 
             <motion.p
@@ -77,8 +77,8 @@ export default function StatsSection() {
               viewport={{ once: true, amount: 0.4 }}
               className="mt-6 max-w-md font-montserrat text-[10px] leading-[1.9] tracking-[0.04em] text-black/45 md:text-[11px]"
             >
-              Every number represents a relationship, a milestone, and a
-              commitment to delivering a better automotive experience.
+              Cada cifra representa una relación, un hito y nuestro compromiso
+              con una mejor experiencia automovilística.
             </motion.p>
           </div>
 
@@ -92,7 +92,7 @@ export default function StatsSection() {
             transition={{ duration: 0.5 }}
             className="group inline-flex w-fit items-center gap-3 border-b border-black/20 pb-2 font-montserrat text-[9px] font-semibold uppercase tracking-[0.16em] transition-colors hover:border-black md:text-[10px]"
           >
-            Discover our showroom
+            Descubre nuestro concesionario
             <ArrowUpRight
               size={14}
               strokeWidth={1.4}
@@ -154,7 +154,7 @@ export default function StatsSection() {
           className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
         >
           <p className="font-montserrat text-[9px] leading-[1.8] tracking-[0.04em] text-black/35">
-            More than vehicles. A standard of service you can trust.
+            Mucho más que vehículos. Un servicio en el que puedes confiar.
           </p>
 
           <span className="font-montserrat text-[9px] uppercase tracking-[0.14em] text-black/40">

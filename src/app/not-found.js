@@ -23,7 +23,7 @@ export default function NotFoundPage() {
       <header className="relative z-10 flex h-20 items-center justify-between border-b border-white/[0.07] px-6 sm:px-10 lg:px-16">
         <Link
           href="/"
-          aria-label={`${BUSINESS_NAME} home`}
+          aria-label={`Inicio de ${BUSINESS_NAME}`}
           className="flex items-center gap-3"
         >
           <Image
@@ -39,7 +39,7 @@ export default function NotFoundPage() {
         </Link>
 
         <span className="hidden font-montserrat text-[10px] font-semibold uppercase tracking-[0.25em] text-white/35 sm:block">
-          Automotive Excellence
+          Excelencia automotriz
         </span>
 
         <Link
@@ -47,7 +47,7 @@ export default function NotFoundPage() {
           className="flex items-center gap-2 font-montserrat text-xs font-semibold text-white/70 transition-colors hover:text-red-500"
         >
           <ArrowLeft size={15} />
-          Home
+          Inicio
         </Link>
       </header>
 
@@ -85,10 +85,10 @@ export default function NotFoundPage() {
 
               <div>
                 <p className="font-montserrat text-xs font-semibold text-white/80">
-                  Wrong destination?
+                  ¿Te equivocaste de camino?
                 </p>
                 <p className="mt-1 font-montserrat text-[10px] text-white/35">
-                  This road doesn't lead anywhere.
+                  Este camino no lleva a ninguna parte.
                 </p>
               </div>
             </div>
@@ -99,21 +99,21 @@ export default function NotFoundPage() {
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-red-500/20 bg-red-500/[0.07] px-3 py-2">
               <span className="h-1.5 w-1.5 rounded-full bg-red-500" />
               <span className="font-montserrat text-[9px] font-bold uppercase tracking-[0.2em] text-red-400">
-                Page unavailable
+                Página no disponible
               </span>
             </div>
 
             <h2 className="font-bebas text-5xl leading-[1.05] tracking-wide sm:text-6xl lg:text-7xl">
-              Looks like
+              Parece que
               <br />
-              you took a
+              tomaste un
               <br />
-              <span className="text-red-600">wrong turn.</span>
+              <span className="text-red-600">camino equivocado.</span>
             </h2>
 
             <p className="mt-6 max-w-sm font-montserrat text-sm leading-7 text-white/45">
-              The page you're looking for doesn't exist, has been moved,
-              or is temporarily unavailable. Let's get you back on the road.
+              La página que buscas no existe, se ha movido o no está disponible
+              temporalmente. Volvamos al camino.
             </p>
 
             {/* Actions */}
@@ -123,7 +123,7 @@ export default function NotFoundPage() {
                 className="group flex items-center justify-center gap-3 rounded-lg bg-red-600 px-6 py-4 font-montserrat text-xs font-bold uppercase tracking-wide transition-all hover:bg-red-700"
               >
                 <Home size={16} />
-                Back to homepage
+                Volver al inicio
                 <ArrowUpRight
                   size={15}
                   className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"
@@ -134,7 +134,7 @@ export default function NotFoundPage() {
                 href="/cars"
                 className="flex items-center justify-center gap-3 rounded-lg border border-white/10 bg-white/[0.04] px-6 py-4 font-montserrat text-xs font-bold uppercase tracking-wide text-white/80 transition-all hover:border-white/25 hover:bg-white/[0.08]"
               >
-                Explore inventory
+                Ver vehículos
                 <ArrowUpRight size={15} />
               </Link>
             </div>
@@ -143,7 +143,7 @@ export default function NotFoundPage() {
             <div className="mt-12 flex items-center gap-3">
               <div className="h-px w-8 bg-white/20" />
               <span className="font-montserrat text-[9px] font-semibold uppercase tracking-[0.25em] text-white/30">
-                Your next drive starts here
+                Tu próximo viaje empieza aquí
               </span>
             </div>
           </div>
@@ -157,7 +157,7 @@ export default function NotFoundPage() {
         </span>
 
         <span className="font-montserrat text-[9px] uppercase tracking-[0.18em] text-white/30">
-          Built for the road ahead.
+          Preparados para el camino que viene.
         </span>
       </footer>
     </main>

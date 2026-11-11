@@ -20,14 +20,14 @@ async function getCar(id) {
     }
 
     if (!response.ok) {
-      throw new Error("Failed to load car");
+      throw new Error("No se ha podido cargar el vehículo.");
     }
 
     const result = await response.json();
 
     if (!result.success) {
       throw new Error(
-        result.message || "Failed to load car"
+        result.message || "No se ha podido cargar el vehículo."
       );
     }
 
@@ -60,20 +60,20 @@ export default async function EditCarPage({
           href="/admin/cars"
           className="text-sm text-black/45 underline underline-offset-4 transition hover:text-black"
         >
-          ← Back to inventory
+          ← Volver al inventario
         </Link>
 
         <div className="mt-7">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-black/35">
-            Inventory
+            Inventario
           </p>
 
           <h1 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">
-            Edit car
+            Editar vehículo
           </h1>
 
           <p className="mt-2 text-sm leading-6 text-black/45">
-            Update the information for{" "}
+            Actualiza la información de{" "}
             <span className="font-medium text-black/70">
               {car.year} {car.make} {car.model}
             </span>

@@ -14,22 +14,22 @@ import {
 import { signOut } from "next-auth/react";
 const navigation = [
   {
-    label: "Dashboard",
+    label: "Panel",
     href: "/admin",
     icon: LayoutDashboard,
   },
   {
-    label: "Cars",
+    label: "Vehículos",
     href: "/admin/cars",
     icon: CarFront,
   },
   {
-    label: "Inquiries",
+    label: "Consultas",
     href: "/admin/inquiries",
     icon: MessageSquare,
   },
   {
-    label: "Test Drives",
+    label: "Pruebas de conducción",
     href: "/admin/test-drives",
     icon: CalendarCheck,
   },
@@ -74,7 +74,7 @@ const handleSignOut = () => {
           <Link
             href="/admin"
             className="flex items-center gap-3"
-            aria-label="Admin dashboard"
+            aria-label="Panel de administración"
           >
             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-black text-sm font-bold text-white">
               A
@@ -82,11 +82,11 @@ const handleSignOut = () => {
 
             <div className="min-w-0">
               <p className="truncate text-sm font-semibold tracking-tight">
-                Admin Panel
+                Panel de administración
               </p>
 
               <p className="truncate text-xs text-black/40">
-                Car Dealership
+                Concesionario
               </p>
             </div>
           </Link>
@@ -95,11 +95,11 @@ const handleSignOut = () => {
         {/* Navigation */}
 
         <nav
-          aria-label="Admin navigation"
+          aria-label="Navegación de administración"
           className="flex-1 overflow-y-auto p-4"
         >
           <p className="mb-3 px-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-black/35">
-            Management
+            Gestión
           </p>
 
           <div className="space-y-1">
@@ -144,7 +144,7 @@ const handleSignOut = () => {
               className="shrink-0"
             />
 
-            <span>View Website</span>
+            <span>Ver sitio web</span>
           </Link>
             
 <button
@@ -152,7 +152,7 @@ const handleSignOut = () => {
   className="flex h-11 w-full items-center gap-3 rounded-xl bg-red-50/70 px-3 text-sm font-medium text-red-700 transition-colors hover:bg-red-100 hover:text-red-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-300"
 >
   <LogOut size={18} strokeWidth={2} />
-  <span>Sign out</span>
+  <span>Cerrar sesión</span>
 </button>
         </div>
       </aside>
@@ -162,7 +162,7 @@ const handleSignOut = () => {
       ====================================================== */}
 
       <nav
-        aria-label="Mobile admin navigation"
+        aria-label="Navegación móvil de administración"
         className="fixed bottom-3 left-3 right-3 z-50 h-[78px] rounded-[22px] border border-white/10 bg-[#181818]/95 shadow-[0_12px_35px_rgba(0,0,0,0.28)] backdrop-blur-xl lg:hidden"
         style={{
           paddingBottom: "max(8px, env(safe-area-inset-bottom))",

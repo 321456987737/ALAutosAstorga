@@ -7,30 +7,30 @@ import { ArrowUpRight, Quote, Star } from "lucide-react";
 const reviews = [
   {
     id: 1,
-    name: "Sample customer 01",
-    location: "Demo testimonial",
-    date: "Demo content",
+    name: "Cliente de ejemplo 01",
+    location: "Testimonio de ejemplo",
+    date: "Contenido de demostración",
     rating: 5,
-    text: "A professional and straightforward experience. The team was helpful, answered my questions clearly, and made the entire process comfortable.",
-    vehicle: "Vehicle purchase",
+    text: "Una experiencia profesional y sencilla. El equipo fue atento, respondió con claridad a mis preguntas e hizo que todo el proceso fuera cómodo.",
+    vehicle: "Compra de vehículo",
   },
   {
     id: 2,
-    name: "Sample customer 02",
-    location: "Demo testimonial",
-    date: "Demo content",
+    name: "Cliente de ejemplo 02",
+    location: "Testimonio de ejemplo",
+    date: "Contenido de demostración",
     rating: 5,
-    text: "The showroom had a great selection of vehicles. I appreciated the attention to detail and the time taken to explain everything.",
-    vehicle: "Showroom experience",
+    text: "El concesionario tenía una gran selección de vehículos. Agradecí la atención al detalle y el tiempo que dedicaron a explicármelo todo.",
+    vehicle: "Experiencia en el concesionario",
   },
   {
     id: 3,
-    name: "Sample customer 03",
-    location: "Demo testimonial",
-    date: "Demo content",
+    name: "Cliente de ejemplo 03",
+    location: "Testimonio de ejemplo",
+    date: "Contenido de demostración",
     rating: 5,
-    text: "A smooth experience from the first conversation to the showroom visit. Communication was clear and the team was easy to deal with.",
-    vehicle: "Customer service",
+    text: "Una experiencia excelente desde la primera conversación hasta la visita al concesionario. La comunicación fue clara y el trato del equipo, cercano.",
+    vehicle: "Atención al cliente",
   },
 ];
 
@@ -60,7 +60,7 @@ export default function ReviewsSection() {
               viewport={{ once: true, amount: 0.4 }}
               className="mb-4 font-montserrat text-[9px] font-medium uppercase tracking-[0.35em] text-black/30 md:text-[10px]"
             >
-              Sample reviews · Demo content
+              Reseñas de ejemplo · Contenido de demostración
             </motion.p>
 
             <motion.h2
@@ -70,9 +70,9 @@ export default function ReviewsSection() {
               viewport={{ once: true, amount: 0.4 }}
               className="font-bebas text-[clamp(4.5rem,9vw,9rem)] leading-[0.8] tracking-[-0.04em] text-black"
             >
-              WORDS THAT
+              EXPERIENCIAS QUE
               <br />
-              SPEAK FOR US.
+              HABLAN POR NOSOTROS.
             </motion.h2>
 
             <motion.p
@@ -82,8 +82,8 @@ export default function ReviewsSection() {
               viewport={{ once: true, amount: 0.4 }}
               className="mt-6 max-w-md font-montserrat text-[10px] leading-[1.9] tracking-[0.04em] text-black/40 md:text-[11px]"
             >
-              Buying a car is a personal decision. We believe the experience
-              should be just as good as the vehicle you drive home.
+              Comprar un coche es una decisión personal. Creemos que la
+              experiencia debe estar a la altura del vehículo que te llevas.
             </motion.p>
           </div>
 
@@ -95,7 +95,7 @@ export default function ReviewsSection() {
             transition={{ duration: 0.5 }}
             className="group inline-flex w-fit items-center gap-3 border-b border-black/20 pb-2 font-montserrat text-[9px] font-semibold uppercase tracking-[0.16em] transition-colors hover:border-black md:text-[10px]"
           >
-            Talk to our team
+            Habla con nuestro equipo
             <ArrowUpRight
               size={14}
               strokeWidth={1.4}
@@ -128,7 +128,7 @@ export default function ReviewsSection() {
 
                 <div
                   className="flex gap-1"
-                  aria-label={`${review.rating} out of 5 stars`}
+                  aria-label={`${review.rating} de 5 estrellas`}
                 >
                   {Array.from({ length: review.rating }, (_, i) => (
                     <Star
@@ -174,14 +174,14 @@ export default function ReviewsSection() {
           className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
         >
           <p className="font-montserrat text-[9px] leading-[1.8] tracking-[0.04em] text-black/35">
-            Every customer interaction is an opportunity to do better.
+            Cada interacción con nuestros clientes es una oportunidad para mejorar.
           </p>
 
           <a
             href="/contact"
             className="group inline-flex w-fit items-center gap-2 font-montserrat text-[9px] font-semibold uppercase tracking-[0.14em] hover:text-black/55"
           >
-            Get in touch
+            Contactar
             <ArrowUpRight
               size={13}
               strokeWidth={1.4}

@@ -46,7 +46,7 @@ export async function GET() {
     return NextResponse.json(
       {
         success: false,
-        message: "Failed to load homepage data",
+        message: "No se han podido cargar los datos de la página de inicio.",
       },
       {
         status: 500,

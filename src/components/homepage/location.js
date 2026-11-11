@@ -59,7 +59,7 @@ export default function LocationSection() {
             }}
             className="mb-6 font-montserrat text-[9px] font-medium uppercase tracking-[0.35em] text-white/55 md:mb-8 md:text-[10px]"
           >
-            Visit us in {BUSINESS_LOCATION}
+            Visítanos en {BUSINESS_LOCATION}
           </motion.p>
 
           {/* MAIN TITLE */}
@@ -116,7 +116,7 @@ export default function LocationSection() {
                 href="/cars"
                 className="group inline-flex items-center gap-3 border border-white/35 bg-white px-6 py-3.5 font-montserrat text-[9px] font-medium uppercase tracking-[0.2em] text-black transition-all duration-300 hover:bg-transparent hover:text-white md:px-7 md:py-4"
               >
-                Browse inventory
+                Ver vehículos
                 <ArrowUpRight
                   size={15}
                   strokeWidth={1.3}
@@ -129,7 +129,7 @@ export default function LocationSection() {
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 border border-white/35 px-6 py-3.5 font-montserrat text-[9px] font-medium uppercase tracking-[0.2em] text-white transition-all duration-300 hover:bg-white hover:text-black md:px-7 md:py-4"
               >
-                Get directions
+                Cómo llegar
                 <ArrowUpRight
                   size={15}
                   strokeWidth={1.3}

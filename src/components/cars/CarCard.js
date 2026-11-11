@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { translateVehicleTerm } from "@/lib/localization";
 
 export default function CarCard({ car }) {
   const image = car.images?.[0];
@@ -7,7 +8,7 @@ export default function CarCard({ car }) {
     maximumFractionDigits: 0,
   }).format(car.price);
 
-  const formattedMileage = new Intl.NumberFormat("en-US").format(
+  const formattedMileage = new Intl.NumberFormat("es-ES").format(
     car.mileage || 0
   );
 
@@ -23,17 +24,17 @@ export default function CarCard({ car }) {
             />
           ) : (
             <div className="flex h-full items-center justify-center text-sm text-black/40">
-              No image available
+              Imagen no disponible
             </div>
           )}
 
           <div className="absolute left-4 top-4 rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-black shadow-sm">
-            {car.condition}
+            {translateVehicleTerm(car.condition)}
           </div>
 
           {car.isFeatured && (
             <div className="absolute right-4 top-4 rounded-full bg-black px-3 py-1.5 text-xs font-semibold text-white">
-              Featured
+              Destacado
             </div>
           )}
         </div>
@@ -59,9 +60,9 @@ export default function CarCard({ car }) {
         </div>
 
         <div className="flex flex-wrap gap-x-4 gap-y-2 border-t border-black/10 pt-4 text-xs text-black/55">
-          <span>{car.transmission}</span>
-          <span>{car.fuelType}</span>
-          <span>{car.bodyType}</span>
+          <span>{translateVehicleTerm(car.transmission)}</span>
+          <span>{translateVehicleTerm(car.fuelType)}</span>
+          <span>{translateVehicleTerm(car.bodyType)}</span>
         </div>
       </div>
     </article>

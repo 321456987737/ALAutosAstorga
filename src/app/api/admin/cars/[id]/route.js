@@ -17,7 +17,7 @@ export async function GET(
       return NextResponse.json(
         {
           success: false,
-          message: "Invalid car ID",
+          message: "El identificador del vehículo no es válido.",
         },
         { status: 400 }
       );
@@ -29,7 +29,7 @@ export async function GET(
       return NextResponse.json(
         {
           success: false,
-          message: "Car not found",
+          message: "No se ha encontrado el vehículo.",
         },
         { status: 404 }
       );
@@ -50,7 +50,7 @@ export async function GET(
     return NextResponse.json(
       {
         success: false,
-        message: "Failed to load car",
+        message: "No se ha podido cargar el vehículo.",
       },
       { status: 500 }
     );
@@ -70,7 +70,7 @@ export async function PATCH(
       return NextResponse.json(
         {
           success: false,
-          message: "Invalid car ID",
+          message: "El identificador del vehículo no es válido.",
         },
         { status: 400 }
       );
@@ -82,7 +82,7 @@ export async function PATCH(
       return NextResponse.json(
         {
           success: false,
-          message: "Car not found",
+          message: "No se ha encontrado el vehículo.",
         },
         { status: 404 }
       );
@@ -171,7 +171,7 @@ export async function PATCH(
             {
               success: false,
               message:
-                "Features must be an array",
+                "Las características deben ser una lista.",
             },
             { status: 400 }
           );
@@ -193,7 +193,7 @@ export async function PATCH(
           return NextResponse.json(
             {
               success: false,
-              message: "Images must be an array",
+              message: "Las imágenes deben ser una lista.",
             },
             { status: 400 }
           );
@@ -211,7 +211,7 @@ export async function PATCH(
 
     return NextResponse.json({
       success: true,
-      message: "Car updated successfully",
+      message: "El vehículo se ha actualizado correctamente.",
       data: {
         car: existingCar,
       },
@@ -226,7 +226,7 @@ export async function PATCH(
       return NextResponse.json(
         {
           success: false,
-          message: "That stock number already exists",
+          message: "Ese número de inventario ya existe.",
         },
         { status: 409 }
       );
@@ -235,7 +235,7 @@ export async function PATCH(
     return NextResponse.json(
       {
         success: false,
-        message: "Failed to update car",
+        message: "No se ha podido actualizar el vehículo.",
       },
       { status: 500 }
     );
@@ -257,7 +257,7 @@ export async function DELETE(
       return NextResponse.json(
         {
           success: false,
-          message: "Invalid car ID",
+          message: "El identificador del vehículo no es válido.",
         },
         { status: 400 }
       );
@@ -269,7 +269,7 @@ export async function DELETE(
       return NextResponse.json(
         {
           success: false,
-          message: "Car not found",
+          message: "No se ha encontrado el vehículo.",
         },
         { status: 404 }
       );
@@ -336,7 +336,7 @@ export async function DELETE(
       {
         success: false,
         message:
-          "Failed to delete car",
+          "No se ha podido eliminar el vehículo.",
       },
       { status: 500 }
     );
